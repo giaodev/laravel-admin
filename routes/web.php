@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('gadmin' , 'LoginController@index');
+Route::namespace('Admin')->group(function(){
+    Route::prefix('admin')->group(function(){
+        /* Group User */
+        Route::prefix('user')->group(function(){
+            Route::get('/', 'UserController@index')->name('user.index');
+        });
+    });
+});
