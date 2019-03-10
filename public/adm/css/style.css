@@ -1,0 +1,10 @@
+ul li{
+    list-style-type: none;
+}
+ul.menu li.main-menu{
+    border-bottom:1px solid #eee;
+    padding-bottom:15px;
+}
+ul.menu li.main-menu li{
+    padding-top:10px;
+}
