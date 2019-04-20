@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 /* Route Login */
-Route::get('gadmin' , 'LoginController@index');
+Route::get('gadmin' , 'LoginController@getIndex')->name('login');
+Route::post('gadmin' , 'LoginController@postIndex')->name('login');
 /* Group Admin */
 Route::namespace('Admin')->group(function(){
     Route::prefix('admin')->group(function(){
@@ -44,9 +45,29 @@ Route::namespace('Admin')->group(function(){
             Route::get('/', 'ProductController@getIndex')->name('product.index');
             Route::get('add', 'ProductController@getAdd')->name('product.add');
             Route::post('add', 'ProductController@postAdd')->name('product.add');
-            Route::get('edit', 'ProductController@getEdit')->name('product.edit');
-            Route::get('edit/{id}', 'ProductController@postEdit')->name('product.edit');
+            Route::get('edit/{id}', 'ProductController@getEdit')->name('product.edit');
+            Route::post('edit/{id}', 'ProductController@postEdit')->name('product.edit');
             Route::get('delete/{id}', 'ProductController@getDelete')->name('product.delete');
+        });
+        /* Group Attr */
+        Route::prefix('attr')->group(function(){
+            Route::get('/', 'AttrController@getIndex')->name('attr.index');
+            Route::post('/', 'AttrController@postIndex')->name('attr.index');
+            Route::get('add', 'AttrController@getAdd')->name('attr.add');
+            Route::post('add', 'AttrController@postAdd')->name('attr.add');
+            Route::get('edit/{id}', 'AttrController@getEdit')->name('attr.edit');
+            Route::post('edit/{id}', 'AttrController@postEdit')->name('attr.edit');
+            Route::get('delete/{id}', 'AttrController@getDelete')->name('attr.delete');
+        });
+        /* Group New */
+        Route::prefix('new')->group(function(){
+            Route::get('/', 'NewController@getIndex')->name('new.index');
+            Route::post('/', 'NewController@postIndex')->name('new.index');
+            Route::get('add', 'NewController@getAdd')->name('new.add');
+            Route::post('add', 'NewController@postAdd')->name('new.add');
+            Route::get('edit/{id}', 'NewController@getEdit')->name('new.edit');
+            Route::post('edit/{id}', 'NewController@postEdit')->name('new.edit');
+            Route::get('delete/{id}', 'NewController@getDelete')->name('new.delete');
         });
     });
 });

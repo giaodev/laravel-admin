@@ -8,3 +8,26 @@ ul.menu li.main-menu{
 ul.menu li.main-menu li{
     padding-top:10px;
 }
+.list_item{
+
+}
+.list_category{
+    margin-left:-20px;
+}
+.list_category ul{
+    margin-left:-20px;
+}
+.left-menu li a{
+    color:#000;
+}
+.left-menu li{
+    border-bottom:1px solid #eee;
+}
+.left-menu .sub-menu li{
+    border-bottom:unset !important;
+    padding-bottom:10px;
+}
+.left-menu{
+    box-shadow: 5px 5px 5px 5px #eee;
+    padding-right:unset;
+}

@@ -21,14 +21,17 @@
     <div class="container">
         <div class="col-sm-4"></div>
         <div class="col-sm-4" style="margin-top:150px;">
-            <form role="form">
+            <form role="form" action="{{ route('login') }}" method="post">
+                @include('status.errors')
+                @include('status.mess')
+                @csrf
               <div class="form-group">
                 <label for="username">Tên đăng nhập</label>
-                <input type="text" class="form-control" id="username" placeholder="Tên đăng nhập">
+                <input type="text" class="form-control" name="username" id="username" placeholder="Tên đăng nhập">
               </div>
               <div class="form-group">
                 <label for="password">Mật khẩu</label>
-                <input type="password" class="form-control" id="password" placeholder="Mật khẩu">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu">
               </div>
               <div class="checkbox">
                 <label>
