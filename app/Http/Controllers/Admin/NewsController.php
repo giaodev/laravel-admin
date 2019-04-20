@@ -9,17 +9,17 @@ use App\Models\Category;
 use App\Models\PC;
 use App\Models\Tag;
 use App\Models\NC;
-class NewController extends Controller
+class NewsController extends Controller
 {
 public function getIndex(){
         $data['title'] = "Danh sách sản phẩm";
-        return view('admin.product.index', $data);
+        $data['data'] = News::all();
+        return view('admin.news.index', $data);
     }
     public function getAdd(){
         $data['title'] = "Thêm mới sản phẩm";
-        $data['listCate'] = Category::all();
-        $data['listAttr'] = Attr::all();
-        return view('admin.product.add', $data);
+        $data['listCate'] = Category::where('cate_type',2)->get();
+        return view('admin.news.add', $data);
     }
     public function postAdd(AddProductRequest $request){
         $product = new Product();

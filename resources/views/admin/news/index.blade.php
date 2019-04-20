@@ -13,7 +13,6 @@
                     <tr class="active">
                         <th>STT</th>
                         <th>Tên</th>
-                        <th>Giá</th>
                         <th>Chuyên mục</th>
                         <th>Trạng Thái</th>
                         <th>Thao tác</th>
@@ -26,27 +25,26 @@
                     <?php $i++; ?>
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $value->product_title }}</td>
-                        <td>{{ $value->product_price }}</td>
+                        <td>{{ $value->new_title }}</td>
                         <td>
                             @php
-                            $categories = DB::table('category')->join('pc','pc.category_id','=','category.id')->where('pc.product_id', $value->id)->get();
+                            $categories = DB::table('category')->join('nc','nc.category_id','=','category.id')->where('nc.new_id', $value->id)->get();
                             @endphp
                             @foreach($categories as $category)
                                 {{ $category->cate_name }},
                             @endforeach
                         </td>
                         <td>
-                            @if($value->product_active == 1)
+                            @if($value->new_active == 1)
                             <a class="btn btn-success">Công khai</a>
                             @else
                             <a class="btn btn-warning">Riêng tư</a>
                             @endif
                         </td>
-                        <td><a class="btn btn-info" href="{{ route('product.edit',[$value->id]) }}"><span class="
+                        <td><a class="btn btn-info" href="{{ route('new.edit',[$value->id]) }}"><span class="
                           glyphicon glyphicon-edit"></span></a>
                           <a class="btn btn-danger"
-                          href="{{ route('product.delete',[$value->id]) }}" onclick="return confirm('Bạn muốn xóa bản ghi này?')"><span
+                          href="{{ route('new.delete',[$value->id]) }}" onclick="return confirm('Bạn muốn xóa bản ghi này?')"><span
                           class="glyphicon glyphicon-trash"></span></a></td>
                       </tr>
                       @endforeach

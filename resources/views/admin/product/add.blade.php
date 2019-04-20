@@ -107,7 +107,8 @@
 </form>
 </div>
 @endsection
-@section('g_head')
+
+@section('g_footer')
 <script src="ckeditor/ckeditor.js"></script>
 <script src="ckfinder/ckfinder.js"></script>
 <script>

@@ -60,14 +60,25 @@ Route::namespace('Admin')->group(function(){
             Route::get('delete/{id}', 'AttrController@getDelete')->name('attr.delete');
         });
         /* Group New */
-        Route::prefix('new')->group(function(){
-            Route::get('/', 'NewController@getIndex')->name('new.index');
-            Route::post('/', 'NewController@postIndex')->name('new.index');
-            Route::get('add', 'NewController@getAdd')->name('new.add');
-            Route::post('add', 'NewController@postAdd')->name('new.add');
-            Route::get('edit/{id}', 'NewController@getEdit')->name('new.edit');
-            Route::post('edit/{id}', 'NewController@postEdit')->name('new.edit');
-            Route::get('delete/{id}', 'NewController@getDelete')->name('new.delete');
+        Route::prefix('news')->group(function(){
+            Route::get('/', 'NewsController@getIndex')->name('news.index');
+            Route::post('/', 'NewsController@postIndex')->name('news.index');
+            Route::get('add', 'NewsController@getAdd')->name('news.add');
+            Route::post('add', 'NewsController@postAdd')->name('news.add');
+            Route::get('edit/{id}', 'NewsController@getEdit')->name('news.edit');
+            Route::post('edit/{id}', 'NewsController@postEdit')->name('news.edit');
+            Route::get('delete/{id}', 'NewsController@getDelete')->name('news.delete');
+        });
+
+        /* Group Tag */
+        Route::prefix('tag')->group(function(){
+            Route::get('/', 'TagController@getIndex')->name('tag.index');
+            Route::post('/', 'TagController@postIndex')->name('tag.index');
+            Route::get('add', 'TagController@getAdd')->name('tag.add');
+            Route::post('add', 'TagController@postAdd')->name('tag.add');
+            Route::get('edit/{id}', 'TagController@getEdit')->name('tag.edit');
+            Route::post('edit/{id}', 'TagController@postEdit')->name('tag.edit');
+            Route::get('delete/{id}', 'TagController@getDelete')->name('tag.delete');
         });
     });
 });
