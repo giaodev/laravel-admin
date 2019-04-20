@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\News;
+use App\Models\Category;
+use App\Models\PC;
+use App\Models\Tag;
+use App\Models\NC;
 class NewController extends Controller
 {
 public function getIndex(){
