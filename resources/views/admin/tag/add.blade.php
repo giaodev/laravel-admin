@@ -25,14 +25,14 @@
                         <div class="form-group">
                             <label for="cate_name" class="col-sm-4 control-label">Tên chuyên mục</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="cate_name" id="title" onkeyup="ChangeToSlug();"
+                                <input type="text" class="form-control" name="cate_name" id="cate_name"
                                 placeholder="Tên chuyên mục" value="{{ old('cate_name') }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="cate_slug" class="col-sm-4 control-label">Đường dẫn</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="cate_slug" id="url"
+                                <input type="text" class="form-control" name="cate_slug" id="cate_slug"
                                 placeholder="Đường dẫn" value="{{ old('cate_slug') }}">
                             </div>
                         </div>

@@ -18,9 +18,7 @@ class CreateTagTable extends Migration
             $table->string('tag_name');
             $table->string('tag_slug');
             $table->text('tag_description')->nullable();
-            $table->integer('tag_order')->default(0);
-            $table->integer('tag_type')->unsigned();
-            $table->integer('tag_parent');
+            $table->integer('tag_orderby')->default(0);
             $table->integer('tag_status')->default(1)->unsigned();
             $table->timestamps();
         });

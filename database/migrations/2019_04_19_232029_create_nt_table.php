@@ -15,7 +15,7 @@ class CreateNtTable extends Migration
     {
         Schema::create('nt', function (Blueprint $table) {
             $table->bigInteger('new_id');
-            $table->bigInteger('tag_id');
+            $table->string('tag_slug');
         });
     }
 

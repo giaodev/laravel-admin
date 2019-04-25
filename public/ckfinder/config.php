@@ -52,13 +52,20 @@ $config['privateDir'] = array(
 $config['images'] = array(
     'maxWidth'  => 1600,
     'maxHeight' => 1200,
-    'quality'   => 80,
+    'quality'   => 100,
     'sizes' => array(
-        'small'  => array('width' => 480, 'height' => 320, 'quality' => 80),
-        'medium' => array('width' => 600, 'height' => 480, 'quality' => 80),
-        'large'  => array('width' => 800, 'height' => 600, 'quality' => 80)
+        'small'  => array('width' => 480, 'height' => 320, 'quality' => 100),
+        'medium' => array('width' => 600, 'height' => 480, 'quality' => 100),
+        'large'  => array('width' => 800, 'height' => 600, 'quality' => 100)
     )
 );
+ $config['thumbnails'] = array(
+     'enabled'      => true,
+     'sizes'        => array(
+         array('width' => '150', 'height' => '150', 'quality' => 100),
+     ),
+     'bmpSupported' => true,
+ );
 
 /*=================================== Backends ========================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_backends
@@ -131,7 +138,7 @@ $config['disallowUnsafeCharacters'] = false;
 $config['secureImageUploads'] = true;
 $config['checkSizeAfterScaling'] = true;
 $config['htmlExtensions'] = array('html', 'htm', 'xml', 'js');
-$config['hideFolders'] = array('.*', 'CVS', '__thumbs');
+$config['hideFolders'] = array('.*', 'CVS', '__thumbs','thumbnail');
 $config['hideFiles'] = array('.*');
 $config['forceAscii'] = false;
 $config['xSendfile'] = false;

@@ -11,14 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/* Group Front End */
+Route::namespace('Frontend')->group(function(){
+    Route::get('/', 'HomeController@index')->name('index');
 });
 /* Route Login */
 Route::get('gadmin' , 'LoginController@getIndex')->name('login');
 Route::post('gadmin' , 'LoginController@postIndex')->name('login');
+Route::get('/logout', function(){
+   Auth::logout();
+   return redirect()->route('login');
+});
 /* Group Admin */
-Route::namespace('Admin')->group(function(){
+Route::namespace('Admin')->middleware('checklogin')->group(function(){
     Route::prefix('admin')->group(function(){
         /* Group User */
         Route::prefix('user')->group(function(){
@@ -79,6 +84,11 @@ Route::namespace('Admin')->group(function(){
             Route::get('edit/{id}', 'TagController@getEdit')->name('tag.edit');
             Route::post('edit/{id}', 'TagController@postEdit')->name('tag.edit');
             Route::get('delete/{id}', 'TagController@getDelete')->name('tag.delete');
+        });
+        /* Group Setting */
+        Route::prefix('setting')->group(function(){
+            Route::get('/', 'SettingController@getIndex')->name('setting.index');
+            Route::post('/', 'SettingController@postIndex')->name('setting.index');
         });
     });
 });

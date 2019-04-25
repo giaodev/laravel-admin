@@ -25,7 +25,7 @@
                     <?php $i++; ?>
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $value->new_title }}</td>
+                        <td>{{ $value->news_title }}</td>
                         <td>
                             @php
                             $categories = DB::table('category')->join('nc','nc.category_id','=','category.id')->where('nc.new_id', $value->id)->get();
@@ -35,22 +35,22 @@
                             @endforeach
                         </td>
                         <td>
-                            @if($value->new_active == 1)
+                            @if($value->news_active == 1)
                             <a class="btn btn-success">Công khai</a>
                             @else
                             <a class="btn btn-warning">Riêng tư</a>
                             @endif
                         </td>
-                        <td><a class="btn btn-info" href="{{ route('new.edit',[$value->id]) }}"><span class="
-                          glyphicon glyphicon-edit"></span></a>
+                        <td><a class="btn btn-info" href="{{ route('news.edit',[$value->id]) }}"><span class="glyphicon glyphicon-edit"></span></a>
                           <a class="btn btn-danger"
-                          href="{{ route('new.delete',[$value->id]) }}" onclick="return confirm('Bạn muốn xóa bản ghi này?')"><span
+                          href="{{ route('news.delete',[$value->id]) }}" onclick="return confirm('Bạn muốn xóa bản ghi này?')"><span
                           class="glyphicon glyphicon-trash"></span></a></td>
                       </tr>
                       @endforeach
                       @endif
                   </tbody>
               </table>
+              {{ $data->links() }}
           </div>
       </div>
   </div>

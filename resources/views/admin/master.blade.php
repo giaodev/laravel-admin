@@ -59,15 +59,15 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
+                    <li><a href="#">{{ Auth::user()->username }}</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{-- {{ Auth::user()->username }} --}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
+                            <li><a href="#">{{ Auth::user()->level }}</a></li>
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="logout">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -101,7 +101,7 @@
                 <li><a href="{{ route('user.add') }}">Thêm thành viên</a></li>
             </ul>
         </li>
-        <li><a href="#">Cấu hình</a></li>
+        <li><a href="{{ route('setting.index') }}">Cấu hình</a></li>
     </ul>
     @show
     <div class="col-sm-10">
@@ -112,6 +112,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="gapp/js/bootstrap.min.js"></script>
+<script src="adm/js/js_code.js"></script>
 @yield('g_footer')
 </body>
 </html>

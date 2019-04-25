@@ -1,0 +1,26 @@
+.navbar-top, .jumbotron-header, .navbar-primary{
+    margin-bottom:0px;
+}
+.navbar-top{
+    display: block;
+    background-color: #2ca7a5;
+    width: 100%;
+    min-height: 36px;
+    border:unset;
+    border-radius: unset;
+}
+@media screen and (min-width: 768px){
+    .jumbotron-header {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+.jumbotron-header{
+    background-color: #31bab8;
+}
+.navbar-primary{
+    background-color: #222426;
+}
+.navbar-primary ul li a{
+    color:#fff !important;
+}
