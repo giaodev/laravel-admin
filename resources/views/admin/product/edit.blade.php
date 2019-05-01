@@ -37,10 +37,22 @@
             <label for="product_description_seo" class="control-label">Mô tả SEO</label>
             <textarea name="product_description_seo" id="product_description_seo" class="form-control" rows="3">{{ $data->product_description_seo }}</textarea>
         </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <label for="product_code" class="control-label">Mã sản phẩm</label>
+                    <input type="text" class="form-control" name="product_code" id="product_code" placeholder="Đường dẫn" value="{{ $data->product_code }}">
+                </div>
+                <div class="col-sm-6">
+                    <label for="product_code" class="control-label">Loại sản phẩm</label>
 
-        <div class="form-group">
-            <label for="product_code" class="control-label">Mã sản phẩm</label>
-            <input type="text" class="form-control" name="product_code" id="product_code" placeholder="Đường dẫn" value="{{ $data->product_code }}">
+                    <select name="product_type" id="input" class="form-control" required="required">
+                        <option value="0" {{ ($data->product_type == 0) ? "selected" : "" }}>Mặc định</option>
+                        <option value="1" {{ ($data->product_type == 1) ? "selected" : "" }}>Nổi bật</option>
+                        <option value="2" {{ ($data->product_type == 2) ? "selected" : "" }}>Bán Chạy</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="form-group">
@@ -61,29 +73,42 @@
   </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
-      <h3 class="panel-title">Chuyên mục</h3>
-  </div>
-  <div class="panel-body">
-    <div class="list_category">
-        {{ listCategory($listCate, $pc) }}
+<div class="col-sm-3">
+        <div class="panel panel-default list_item">
+            <div class="panel-heading">
+              <h3 class="panel-title">Trạng thái</h3>
+          </div>
+          <div class="panel-body">
+            <select name="product_active" id="input" class="form-control" required="required">
+                <option value="1" {{ ($data->product_active == 1) ? "selected" : "" }}>Công khai</option>
+                <option value="2" {{ ($data->product_active == 2) ? "selected" : "" }}>Riêng tư</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Chuyên mục</h3>
+      </div>
+      <div class="panel-body list_scroll">
+        <div class="list_category">
+            {{ listCategory($listCate, $pc) }}
+        </div>
     </div>
 </div>
-</div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading">
       <h3 class="panel-title">Thuộc tính sản phẩm</h3>
   </div>
-  <div class="panel-body">
+  <div class="panel-body list_scroll">
     <div class="list_category">
         {{ listAttr($listAttr,$data->attr_id) }}
     </div>
 </div>
 </div>
 
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading">
       <h3 class="panel-title">Hình ảnh</h3>
   </div>
   <div class="panel-body">
@@ -94,23 +119,24 @@
     </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading">
       <h3 class="panel-title">Album hình ảnh</h3>
   </div>
   <div class="panel-body">
     <a onclick="openPopup2()">Upload</a>
-    <textarea name="product_gallery" id="url2" class="hidden">{{ $data->product_gallery }}</textarea>
+    <textarea name="product_gallery" id="url2" class="form-control">{{ old('product_gallery', isset($data->product_gallery) ? $data->product_gallery : NULL) }}</textarea>
     <div id="output2">
         @php
-            $gallery = explode('|', $data->product_gallery);
-            foreach($gallery as $image){
-                if($image != NULL){
-                    echo '<img src="'.$image.'" width="50" />';
-                }
+        $gallery = explode('|', $data->product_gallery);
+        foreach($gallery as $image){
+            if($image != NULL){
+                echo '<img src="'.$image.'" width="50" />';
             }
+        }
         @endphp
     </div>
+</div>
 </div>
 </div>
 </form>
@@ -167,8 +193,8 @@
                 document.getElementById('url2').value = chosenFiles;
                 output2.innerHTML = chosenFiles2;
             } );
-          }
-      });
+        }
+    });
   }
 </script>
 @endsection

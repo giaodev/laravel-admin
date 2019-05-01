@@ -25,7 +25,7 @@ class AddCategoryRequest extends FormRequest
     {
         return [
             'cate_name' => 'required',
-            'cate_slug' => 'unique:category',
+            'cate_slug' => 'required|unique:category,cate_slug|unique:product,product_slug|unique:news,news_slug',
             'cate_type' => 'required',
         ];
     }

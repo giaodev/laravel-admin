@@ -14,10 +14,18 @@
 /* Group Front End */
 Route::namespace('Frontend')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
+    Route::get('{slug}.html','HomeController@check_slug')->name('check_slug');
+    Route::get('add_cart/{id}','HomeController@add_cart')->name('add_cart');
+    Route::get('gio-hang','HomeController@cart')->name('cart');
+    Route::get('remove_cart/{id}','HomeController@remove_cart')->name('remove_cart');
+    Route::post('update_cart','HomeController@update_cart')->name('update_cart');
+    Route::get('cart_clear','HomeController@cart_clear')->name('cart_clear');
+    Route::get('thanh-toan','HomeController@getPay')->name('pay');
+    Route::post('thanh-toan','HomeController@postPay')->name('pay');
 });
 /* Route Login */
-Route::get('gadmin' , 'LoginController@getIndex')->name('login');
-Route::post('gadmin' , 'LoginController@postIndex')->name('login');
+Route::get('admin' , 'LoginController@getIndex')->name('login');
+Route::post('admin' , 'LoginController@postIndex')->name('login');
 Route::get('/logout', function(){
    Auth::logout();
    return redirect()->route('login');
@@ -48,11 +56,13 @@ Route::namespace('Admin')->middleware('checklogin')->group(function(){
         /* Group Product */
         Route::prefix('product')->group(function(){
             Route::get('/', 'ProductController@getIndex')->name('product.index');
+            Route::get('search', 'ProductController@getSearch')->name('product.search');
             Route::get('add', 'ProductController@getAdd')->name('product.add');
             Route::post('add', 'ProductController@postAdd')->name('product.add');
             Route::get('edit/{id}', 'ProductController@getEdit')->name('product.edit');
             Route::post('edit/{id}', 'ProductController@postEdit')->name('product.edit');
             Route::get('delete/{id}', 'ProductController@getDelete')->name('product.delete');
+            Route::get('deleteall', 'ProductController@getDeleteAll')->name('product.deleteall');
         });
         /* Group Attr */
         Route::prefix('attr')->group(function(){
@@ -68,6 +78,7 @@ Route::namespace('Admin')->middleware('checklogin')->group(function(){
         Route::prefix('news')->group(function(){
             Route::get('/', 'NewsController@getIndex')->name('news.index');
             Route::post('/', 'NewsController@postIndex')->name('news.index');
+            Route::get('search', 'NewsController@getSearch')->name('news.search');
             Route::get('add', 'NewsController@getAdd')->name('news.add');
             Route::post('add', 'NewsController@postAdd')->name('news.add');
             Route::get('edit/{id}', 'NewsController@getEdit')->name('news.edit');
@@ -84,6 +95,16 @@ Route::namespace('Admin')->middleware('checklogin')->group(function(){
             Route::get('edit/{id}', 'TagController@getEdit')->name('tag.edit');
             Route::post('edit/{id}', 'TagController@postEdit')->name('tag.edit');
             Route::get('delete/{id}', 'TagController@getDelete')->name('tag.delete');
+        });
+        /* Group Images */
+        Route::prefix('images')->group(function(){
+            Route::get('/', 'ImagesController@getIndex')->name('image.index');
+            Route::post('/', 'ImagesController@postIndex')->name('image.index');
+            Route::get('add', 'ImagesController@getAdd')->name('image.add');
+            Route::post('add', 'ImagesController@postAdd')->name('image.add');
+            Route::get('edit/{id}', 'ImagesController@getEdit')->name('image.edit');
+            Route::post('edit/{id}', 'ImagesController@postEdit')->name('image.edit');
+            Route::get('delete/{id}', 'ImagesController@getDelete')->name('image.delete');
         });
         /* Group Setting */
         Route::prefix('setting')->group(function(){

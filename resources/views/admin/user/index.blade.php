@@ -27,7 +27,7 @@
             <td>{{ $value->username }}</td>
             <td>{{ $value->email }}</td>
             <td><a class="btn btn-info" href="{{ route('user.edit',[$value->id]) }}"><span class="
-              glyphicon glyphicon-edit"></span></a> <a class="btn btn-danger" href="{{ route('user.delete',[$value->id]) }}"><span class="glyphicon glyphicon-trash"></span></a></td>
+              glyphicon glyphicon-edit"></span></a> <a class="btn btn-danger" href="{{ route('user.delete',[$value->id]) }}" onclick="return confirm('Bạn muốn xóa bản ghi này?')"><span class="glyphicon glyphicon-trash"></span></a></td>
           </tr>
           @endforeach
           @endif

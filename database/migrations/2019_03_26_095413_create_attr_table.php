@@ -21,6 +21,7 @@ class CreateAttrTable extends Migration
             $table->integer('attr_orderby')->default(0);
             $table->integer('attr_active')->default(1);
             $table->integer('attr_form')->default(1);
+            $table->integer('attr_filter')->default(0);
             $table->timestamps();
         });
     }

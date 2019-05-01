@@ -13,11 +13,11 @@
           @csrf
           <div class="form-group">
             <label for="product_title" class="control-label">Tiêu đề</label>
-            <input type="text" class="form-control" name="product_title" id="product_title" placeholder="Tiêu đề" value="{{ old('product_title') }}">
+            <input type="text" class="form-control" name="product_title" id="title" onkeyup="ChangeToSlug();" placeholder="Tiêu đề" value="{{ old('product_title') }}">
         </div>
         <div class="form-group">
             <label for="product_slug" class="control-label">Đường dẫn</label>
-            <input type="text" class="form-control" name="product_slug" id="product_slug" placeholder="Đường dẫn" value="{{ old('product_slug') }}">
+            <input type="text" class="form-control" name="product_slug" id="slug" placeholder="Đường dẫn" value="{{ old('product_slug') }}">
         </div>
 
         <div class="form-group">
@@ -39,9 +39,22 @@
             <textarea name="product_description_seo" id="product_description_seo" class="form-control" rows="3">{{ old('product_description_seo') }}</textarea>
         </div>
 
-        <div class="form-group">
-            <label for="product_code" class="control-label">Mã sản phẩm</label>
-            <input type="text" class="form-control" name="product_code" id="product_code" placeholder="Đường dẫn" value="{{ old('product_code') }}">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <label for="product_code" class="control-label">Mã sản phẩm</label>
+                    <input type="text" class="form-control" name="product_code" id="product_code" placeholder="Code" value="{{ old('product_code') }}">
+                </div>
+                <div class="col-sm-6">
+                    <label for="product_code" class="control-label">Loại sản phẩm</label>
+
+                    <select name="product_type" id="input" class="form-control" required="required">
+                        <option value="0">Mặc định</option>
+                        <option value="1">Nổi bật</option>
+                        <option value="2">Bán Chạy</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="form-group">
@@ -63,29 +76,42 @@
   </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
-      <h3 class="panel-title">Chuyên mục</h3>
-  </div>
-  <div class="panel-body">
-    <div class="list_category">
-        {{ listCategory($listCate) }}
+<div class="col-sm-3">
+        <div class="panel panel-default list_item">
+            <div class="panel-heading">
+              <h3 class="panel-title">Trạng thái</h3>
+          </div>
+          <div class="panel-body">
+            <select name="product_active" id="input" class="form-control" required="required">
+                <option value="1">Công khai</option>
+                <option value="2">Riêng tư</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Chuyên mục</h3>
+      </div>
+      <div class="panel-body list_scroll">
+        <div class="list_category">
+            {{ listCategory($listCate) }}
+        </div>
     </div>
 </div>
-</div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading">
       <h3 class="panel-title">Thuộc tính sản phẩm</h3>
   </div>
-  <div class="panel-body">
+  <div class="panel-body list_scroll">
     <div class="list_category">
         {{ listAttr($listAttr) }}
     </div>
 </div>
 </div>
 
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading">
       <h3 class="panel-title">Hình ảnh</h3>
   </div>
   <div class="panel-body">
@@ -94,14 +120,15 @@
     <div id="output"></div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading">
       <h3 class="panel-title">Album hình ảnh</h3>
   </div>
   <div class="panel-body">
     <a onclick="openPopup2()">Upload</a>
     <textarea name="product_gallery" id="url2" class="hidden"></textarea>
     <div id="output2"></div>
+</div>
 </div>
 </div>
 </form>
@@ -159,8 +186,8 @@
                 document.getElementById('url2').value = chosenFiles;
                 output2.innerHTML = chosenFiles2;
             } );
-          }
-      });
+        }
+    });
   }
 </script>
 @endsection

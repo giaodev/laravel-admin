@@ -33,12 +33,23 @@ class CategoryController extends Controller
             $slug = Str::slug($request->cate_name,'-');
         }
         $cate->cate_slug = $slug;
-        $cate->cate_description = $request->cate_description;
+        if($request->cate_info != ""){
+            $cate->cate_info = $request->cate_info;
+        }
+        if($request->cate_title != ""){
+            $cate->cate_title = $request->cate_title;
+        }
+        if($request->cate_description != ""){
+            $cate->cate_description = $request->cate_description;
+        }
         $cate_order = ($request->cate_order) ? $request->cate_order : 0;
         $cate->cate_order = $cate_order;
         $cate->cate_type = $request->cate_type;
         $cate->cate_status = $request->cate_status;
         $cate->cate_parent = $request->cate_parent;
+        if($request->cate_type2 != ""){
+            $cate->cate_type2 = $request->cate_type2;
+        }
         $cate->save();
         $request->session()->flash('status', 'Task was successful!');
         return back();
@@ -58,12 +69,18 @@ class CategoryController extends Controller
             $slug = Str::slug($request->cate_name,'-');
         }
         $cate->cate_slug = $slug;
+        $cate->cate_info = $request->cate_info;
+        $cate->cate_title = $request->cate_title;
+        $cate->cate_description = $request->cate_description;
         $cate->cate_description = $request->cate_description;
         $cate_order = ($request->cate_order) ? $request->cate_order : 0;
         $cate->cate_order = $cate_order;
         $cate->cate_type = $request->cate_type;
         $cate->cate_status = $request->cate_status;
         $cate->cate_parent = $request->cate_parent;
+        if($request->cate_type2 != ""){
+            $cate->cate_type2 = $request->cate_type2;
+        }
         $cate->save();
         $request->session()->flash('status', 'Task was successful!');
         return back();
@@ -78,7 +95,7 @@ class CategoryController extends Controller
     }
     public function getShow(){
         $data['title'] = "Danh mục hiển thị";
-        $data['data'] = Category::all()->where('cate_status', 1);
+        $data['data'] = Category::orderBy('cate_order','desc')->where(['cate_status' => 1, 'cate_type2' => 1])->get();
         return view('admin.category.show', $data);
     }
 }

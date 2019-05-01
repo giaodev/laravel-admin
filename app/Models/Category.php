@@ -13,4 +13,7 @@ class Category extends Model
     public function pc(){
         return $this->hasMany('app\Models\PC', 'id','category_id');
     }
+    public function images(){
+        return $this->hasMany('app\Models\Images', 'images_category','id');
+    }
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="{{ asset('/') }}">
-    <title>{{ $title }}</title>
+    <title>@yield('title')</title>
 
     <!-- Bootstrap -->
     <link href="gapp/css/bootstrap.min.css" rel="stylesheet">
@@ -22,105 +22,36 @@
     <header>
       <nav class="navbar navbar-default navbar-top" role="navigation">
         <div class="container">
-
+            <ul class="nav navbar-nav">
+              <li><a href="#"><span class="glyphicon glyphicon-time"></span> Chuyên đồng hồ Authentic - Đồng hồ chính hãng tại Việt Nam</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="tel:0978432882"><span class="glyphicon glyphicon-earphone"></span> Hotline: 0978.432.882</a></li>
+              <li><a href=""><span class="glyphicon glyphicon-map-marker"></span> Địa chỉ: Số 2 Ngõ 98 Thái Hà, Trung Liệt, Đống Đa, Hà Nội</a></li>
+            </ul>
         </div><!-- /.container-fluid -->
       </nav>
       <div class="jumbotron jumbotron-header">
         <div class="container">
-          ...
+          <div class="col-sm-2">
+            <img src="{{ ($setting->logo != "") ? $setting->logo : "" }}" alt="" height="100">
+          </div>
+          <div class="col-sm-6 search">
+              <form action="" method="POST" role="form">
+                  <input type="search" name="" id="input" class="form-control" value="" title="" placeholder="Nhập từ khóa cần tìm kiếm..">
+                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+              </form>
+          </div>
+          <div class="col-sm-4 hotline">
+            <img src="/frontend/images/hotline.jpg" alt="" width="150">
+            <span class="phone">0978.432.882</span>
+        </div>
         </div>
       </div>
-      <nav class="navbar navbar-default navbar-primary" role="navigation">
+        @include('default.module.menu')
         <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Brand</a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Link</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <img src="https://via.placeholder.com/1980x700" alt="...">
-            <div class="carousel-caption">
-              ...
-            </div>
-          </div>
-          <div class="item">
-            <img src="https://via.placeholder.com/1980x700" alt="...">
-            <div class="carousel-caption">
-              ...
-            </div>
-          </div>
-          <div class="item">
-            <img src="https://via.placeholder.com/1980x700" alt="...">
-            <div class="carousel-caption">
-              ...
-            </div>
-          </div>
+            @yield('banner')
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-      </div>
     </header>
     <main>
       <div class="container">
@@ -134,5 +65,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="gapp/js/bootstrap.min.js"></script>
+    @yield('script_footer')
   </body>
 </html>

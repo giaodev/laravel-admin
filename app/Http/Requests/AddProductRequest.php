@@ -25,7 +25,7 @@ class AddProductRequest extends FormRequest
     {
         return [
             'product_title' => 'required',
-            'product_slug' => 'unique:product',
+            'product_slug' => 'required|unique:product,product_slug|unique:news,news_slug|unique:category,cate_slug',
             'cate' => 'required',
         ];
     }

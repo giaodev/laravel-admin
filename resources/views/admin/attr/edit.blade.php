@@ -59,6 +59,22 @@
                             </optgroup>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <select name="attr_filter" id="input" class="form-control" required="required" multiple="">
+                            <optgroup label="Hiển thị ở bộ lọc">
+                                <option value="1" {{ ($data->attr_filter == 0) ? "selected" : "" }}>Không hiển thị</option>
+                                <option value="2" {{ ($data->attr_filter == 1) ? "selected" : "" }}>Hiển thị</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select name="attr_form" id="input" class="form-control" required="required">
+                            <optgroup label="Form bộ lọc">
+                                <option value="1" {{ ($data->attr_form == 1) ? "selected" : "" }}>Dropdown</option>
+                                <option value="2" {{ ($data->attr_form == 2) ? "selected" : "" }}>Checkbox</option>
+                            </optgroup>
+                        </select>
+                    </div>
                 </div>
             </div>
         </form>

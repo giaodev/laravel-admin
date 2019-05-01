@@ -51,7 +51,7 @@
                         <td><a class="btn btn-info" href="{{ route('category.edit',[$value->id]) }}"><span class="
                           glyphicon glyphicon-edit"></span></a>
                           <a class="btn btn-danger"
-                          href="{{ route('category.delete',[$value->id]) }}"><span
+                          href="{{ route('category.delete',[$value->id]) }}" onclick="return confirm('Bạn muốn xóa bản ghi này?')"><span
                           class="glyphicon glyphicon-trash"></span></a></td>
                       </tr>
                       @endforeach

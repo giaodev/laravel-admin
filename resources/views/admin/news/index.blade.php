@@ -8,6 +8,16 @@
         </div>
         <div class="panel-body">
             @include('status.mess')
+            <form action="{{ route('news.search') }}" method="GET" role="form">
+                @csrf
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="search" name="keyword" class="form-control" id="" placeholder="Search..">
+                    </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            <br>
             <table class="table table-bordered">
                 <thead>
                     <tr class="active">
@@ -25,7 +35,7 @@
                     <?php $i++; ?>
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $value->news_title }}</td>
+                        <td><a href="{{ route('news.edit',[$value->id]) }}">{{ $value->news_title }}</a></td>
                         <td>
                             @php
                             $categories = DB::table('category')->join('nc','nc.category_id','=','category.id')->where('nc.new_id', $value->id)->get();

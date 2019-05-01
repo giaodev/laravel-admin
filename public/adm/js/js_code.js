@@ -32,3 +32,10 @@ function ChangeToSlug()
     //In slug ra textbox có id “slug”
     document.getElementById('slug').value = slug;
 }
+
+
+$(document).ready(function(){
+    $("#checkAll").click(function(){
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+});

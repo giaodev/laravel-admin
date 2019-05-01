@@ -9,7 +9,7 @@ use App\Models\Setting;
 
 class SettingController extends Controller
 {
-public function getIndex(){
+    public function getIndex(){
         $data['title'] = "Danh sách Setting";
         $data['data'] = setting::find(1);
         return view('admin.setting.index', $data);

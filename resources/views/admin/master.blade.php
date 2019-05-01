@@ -19,7 +19,7 @@
 @yield('g_head')
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -96,6 +96,11 @@
             </ul>
         </li>
         <li><a href="#">Đơn hàng</a></li>
+        <li><a href="{{ route('image.index') }}">Hình ảnh <span class="glyphicon glyphicon-chevron-down"></span></a>
+            <ul class="sub-menu">
+                <li><a href="{{ route('image.add') }}">Thêm hình ảnh</a></li>
+            </ul>
+        </li>
         <li><a href="{{ route('user.index') }}">Thành viên <span class="glyphicon glyphicon-chevron-down"></span></a>
             <ul class="sub-menu">
                 <li><a href="{{ route('user.add') }}">Thêm thành viên</a></li>

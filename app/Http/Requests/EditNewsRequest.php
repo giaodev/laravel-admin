@@ -25,7 +25,7 @@ class EditNewsRequest extends FormRequest
     {
         return [
             'news_title' => 'required',
-            'news_slug' => [Rule::unique('news')->ignore($this->segment(4), 'id')],
+            'news_slug' => ['required', Rule::unique('news','news_slug')->ignore($this->segment(4), 'id'), Rule::unique('product','product_slug')->ignore($this->segment(4), 'id'), Rule::unique('category','cate_slug')->ignore($this->segment(4), 'id')],
             'cate' => 'required',
         ];
     }

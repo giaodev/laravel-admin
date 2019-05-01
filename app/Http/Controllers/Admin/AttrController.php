@@ -65,7 +65,7 @@ class AttrController extends Controller
         if($request->attr_slug) {
             $slug = Str::slug($request->attr_slug,'-');
         } else {
-            $slug = Str::slug($request->attr_slug,'-');
+            $slug = Str::slug($request->attr_name,'-');
         }
         $attr->attr_slug = $slug;
         $attr_orderby = ($request->attr_orderby) ? $request->attr_orderby : 0;

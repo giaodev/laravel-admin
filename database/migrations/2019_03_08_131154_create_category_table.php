@@ -17,11 +17,14 @@ class CreateCategoryTable extends Migration
             $table->bigIncrements('id');
             $table->string('cate_name');
             $table->string('cate_slug');
+            $table->text('cate_info')->nullable();
+            $table->string('cate_title')->nullable();
             $table->text('cate_description')->nullable();
             $table->integer('cate_order')->default(0);
-            $table->integer('cate_type')->unsigned();
+            $table->integer('cate_type')->default(0)->unsigned();
             $table->integer('cate_parent');
             $table->integer('cate_status')->default(1)->unsigned();
+            $table->integer('cate_type2')->default(0)->unsigned();
             $table->timestamps();
         });
     }
