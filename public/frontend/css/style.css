@@ -9,6 +9,9 @@ a {
     font-family: 'Roboto', sans-serif;
     color: #585858;
 }
+a:hover{
+    text-decoration: none;
+}
 .navbar-top, .jumbotron-header, .navbar-primary{
     margin-bottom:0px;
 }
@@ -101,14 +104,20 @@ a {
 }
 .product .item{
     text-align: center;
+    border: 1px solid #f0eceb;
+    position: relative;
 }
 .product .item a{
     color:#000;
 }
 .product .item img{
     object-fit: cover;
-    height: 300px;
+    height: 250px;
     margin: 0 auto;
+}
+.product .price{
+    color:red;
+    font-weight: bold;
 }
 .product .old_price{
     text-decoration: line-through;
@@ -120,8 +129,37 @@ a {
 }
 .product .item .promotion{
     color:red;
+    font-weight: bold;
 }
-
+.info_pro {
+    background: #f0eceb;
+    padding: 10px 10px 15px;
+    text-align: center;
+    position: relative;
+}
+.hot_ico {
+    top: -23px;
+    right: 5px;
+    height: 13px;
+    width: 60px;
+    background: url(../images/sp-hot.gif) no-repeat;
+    position: absolute;
+    z-index: 100;
+}
+.product p{
+}
+.info_pro p.muangay {
+    width: 120px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #e70000;
+    border-radius: 0px;
+    margin: auto;
+}
+.info_pro p.muangay a {
+    color: #FFF;
+}
 /* Single Product */
 .single-product .carousel-control.left, .single-product .carousel-control.right{
     background-image:unset;
@@ -239,4 +277,26 @@ a {
     color: #ffffff;
     text-transform: uppercase;
     font-size: 25px;
+}
+
+.product_orders {
+    text-align: center;
+}
+.product_orders .title{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.product_orders .price{
+    font-weight: bold;
+    color:red;
+    font-size: 1.5em;
+}
+
+.jumbotron-footer {
+    margin-bottom:0px;
+    margin-top:30px;
+}
+.filter .item_filter{
+    margin-top:5px;
+    margin-bottom:5px;
 }

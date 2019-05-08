@@ -13,12 +13,30 @@ function callMenu($data, $parent = 0, $text="|--", $select = 0){
                     <?php
                 }
                 unset($data[$key]);
-                callMenu($data, $value['id'], $text."|--");
+                callMenu($data, $value['id'], $text."|--",$select);
             }
         }
     }
 }
-
+function callCategories($data, $parent = 0, $text="|--", $select = 0){
+    if($data){
+        foreach($data as $key => $value){
+            if($value['cate_parent'] == $parent){
+                if ($select != 0 && $value['id'] == $select) {
+                    ?>
+                    <option value="<?php echo $value['id'] ?>" selected><?php echo $text.$value['cate_name'] ?></option>
+                    <?php
+                } else {
+                    ?>
+                    <option value="<?php echo $value['id'] ?>"><?php echo $text.$value['cate_name'] ?></option>
+                    <?php
+                }
+                unset($data[$key]);
+                callCategories($data, $value['id'], $text."|--",$select);
+            }
+        }
+    }
+}
 function listCategory($data,$pc="", $parent = 0){
     if($data){
         foreach($data as $key => $value){
@@ -83,11 +101,11 @@ function listAttr($data,$attr="", $parent = 0){
                 ?>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="attr[]" value="<?php echo $value['id'] ?>"
+                    <input type="checkbox" name="attr[]" value="<?php echo $value['attr_slug'] ?>"
                     <?php
                     if($attr != ""){
                         foreach(json_decode($attr) as $attr_id){
-                            if($attr_id == $value['id']){
+                            if($attr_id == $value['attr_slug']){
                                 echo "checked";
                             }
                         }

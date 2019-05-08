@@ -24,7 +24,7 @@ class NewsController extends Controller
     }
     public function getSearch(Request $request){
         $data['title'] = "Kết quả từ khóa "."\"".$request->keyword."\"";
-        $data['data'] = News::orderby('id', 'desc')->where('news_title','like', $request->keyword . '%')->paginate(10);
+        $data['data'] = News::orderby('id', 'desc')->where('news_title','like','%'. $request->keyword . '%')->paginate(10);
         return view('admin.news.index', $data);
     }
     public function getAdd()

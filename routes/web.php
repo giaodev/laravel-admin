@@ -11,17 +11,60 @@
 |
 */
 
+/* Sitemap */
+Route::get('sitemap', function(){
+
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // add items to the sitemap (url, date, priority, freq)
+    $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+    // $sitemap->add(URL::to('page'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+
+    // get all posts from db
+    $products = DB::table('product')->orderBy('created_at', 'desc')->get();
+    $news = DB::table('news')->orderBy('created_at', 'desc')->get();
+    $category = DB::table('category')->orderBy('created_at', 'desc')->get();
+    $tags = DB::table('tag')->orderBy('created_at', 'desc')->get();
+
+    // add every post to the sitemap
+    foreach ($products as $product)
+    {
+        $sitemap->add(asset('/').$product->product_slug . ".html", $product->updated_at, '0.3', 'weekly');
+    }
+    foreach ($news as $new)
+    {
+        $sitemap->add(asset('/').$new->news_slug . ".html", $new->updated_at, '0.3', 'weekly');
+    }
+    foreach ($category as $cate)
+    {
+        $sitemap->add(asset('/').$cate->cate_slug . ".html", $cate->updated_at, '0.5', 'daily');
+    }
+    foreach ($tags as $tag)
+    {
+        $sitemap->add(asset('/').'tag/'.$tag->tag_slug . ".html", $tag->updated_at, '0.5', 'daily');
+    }
+
+    // generate your sitemap (format, filename)
+    $sitemap->store('xml', 'sitemap');
+    // this will generate file mysitemap.xml to your public folder
+
+});
+
+
 /* Group Front End */
 Route::namespace('Frontend')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('{slug}.html','HomeController@check_slug')->name('check_slug');
     Route::get('add_cart/{id}','HomeController@add_cart')->name('add_cart');
+    Route::get('quick_cart/{id}','HomeController@quick_cart')->name('quick_cart');
     Route::get('gio-hang','HomeController@cart')->name('cart');
     Route::get('remove_cart/{id}','HomeController@remove_cart')->name('remove_cart');
     Route::post('update_cart','HomeController@update_cart')->name('update_cart');
     Route::get('cart_clear','HomeController@cart_clear')->name('cart_clear');
     Route::get('thanh-toan','HomeController@getPay')->name('pay');
     Route::post('thanh-toan','HomeController@postPay')->name('pay');
+    Route::get('hoan-tat','HomeController@success')->name('success');
 });
 /* Route Login */
 Route::get('admin' , 'LoginController@getIndex')->name('login');
@@ -33,6 +76,10 @@ Route::get('/logout', function(){
 /* Group Admin */
 Route::namespace('Admin')->middleware('checklogin')->group(function(){
     Route::prefix('admin')->group(function(){
+        /* Group User */
+        Route::prefix('dashboard')->group(function(){
+            Route::get('/', 'HomeController@getIndex')->name('home.index');
+        });
         /* Group User */
         Route::prefix('user')->group(function(){
             Route::get('/', 'UserController@getIndex')->name('user.index');
@@ -110,6 +157,24 @@ Route::namespace('Admin')->middleware('checklogin')->group(function(){
         Route::prefix('setting')->group(function(){
             Route::get('/', 'SettingController@getIndex')->name('setting.index');
             Route::post('/', 'SettingController@postIndex')->name('setting.index');
+        });
+        /* Group Widget */
+        Route::prefix('widget')->group(function(){
+            Route::get('/', 'WidgetController@getIndex')->name('widget.index');
+            Route::post('/', 'WidgetController@postIndex')->name('widget.index');
+            Route::get('add', 'WidgetController@getAdd')->name('widget.add');
+            Route::post('add', 'WidgetController@postAdd')->name('widget.add');
+            Route::get('edit/{id}', 'WidgetController@getEdit')->name('widget.edit');
+            Route::post('edit/{id}', 'WidgetController@postEdit')->name('widget.edit');
+            Route::get('delete/{id}', 'WidgetController@getDelete')->name('widget.delete');
+        });
+        /* Group Orders */
+        Route::prefix('orders')->group(function(){
+            Route::get('/', 'OrdersController@getIndex')->name('orders.index');
+            Route::post('/', 'OrdersController@postIndex')->name('orders.index');
+            Route::get('edit/{id}', 'OrdersController@getEdit')->name('orders.edit');
+            Route::post('edit/{id}', 'OrdersController@postEdit')->name('orders.edit');
+            Route::get('delete/{id}', 'OrdersController@getDelete')->name('orders.delete');
         });
     });
 });

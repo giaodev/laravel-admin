@@ -36,6 +36,7 @@ class ProductController extends Controller
     public function getAdd(){
         $data['title'] = "Thêm mới sản phẩm";
         $data['listCate'] = Category::where('cate_type',1)->get();
+        $data['listCate2'] = Category::where('cate_type',1)->get();
         $data['listAttr'] = Attr::all();
         return view('admin.product.add', $data);
     }
@@ -86,6 +87,7 @@ class ProductController extends Controller
             $attr_id = $request->attr;
             $product->attr_id = json_encode($product_gallery);
         }
+        $product->cate_primary_id = $request->cate_primary_id;
         $product->user_id = Auth::user()->id;
         $product->save();
         $last_insert_id = $product->id;
@@ -102,6 +104,7 @@ class ProductController extends Controller
         $data['title'] = 'Cập nhật sản phẩm';
         $data['data'] = Product::find($id);
         $data['listCate'] = Category::where('cate_type',1)->get();
+        $data['listCate2'] = Category::where('cate_type',1)->get();
         $data['listAttr'] = Attr::all();
         $data['pc'] = DB::table('pc')->where('product_id', $id)->get();
         return view('admin.product.edit', $data);
@@ -134,6 +137,7 @@ class ProductController extends Controller
             $attr_id = $request->attr;
             $product->attr_id = json_encode($attr_id);
         }
+        $product->cate_primary_id = $request->cate_primary_id;
         $product->user_id = Auth::user()->id;
         $product->save();
         $pc = DB::table('pc')->where('product_id',$id)->delete();

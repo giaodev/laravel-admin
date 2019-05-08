@@ -13,7 +13,7 @@ class CategoryController extends Controller
 {
     public function getIndex(){
         $data['title'] = "Danh sách chuyên mục";
-        $data['data'] = Category::all();
+        $data['data'] = Category::paginate(10);
         return view('admin.category.index', $data);
     }
     public function postIndex(){

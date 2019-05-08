@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('title', $title)
 @section('content')
-<div class="row">
+<div class="">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">{{ $title }}</h3>
@@ -9,7 +9,6 @@
         <div class="panel-body">
             @include('status.mess')
             <form action="{{ route('news.search') }}" method="GET" role="form">
-                @csrf
                 <div class="row">
                     <div class="col-sm-4">
                         <input type="search" name="keyword" class="form-control" id="" placeholder="Search..">

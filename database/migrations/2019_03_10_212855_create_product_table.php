@@ -29,6 +29,7 @@ class CreateProductTable extends Migration
             $table->integer('product_active')->nullable(true)->default(1);
             $table->integer('product_type')->default(0);
             $table->text('attr_id')->nullable(true);
+            $table->integer('cate_primary_id')->default(0);
             $table->integer('user_id');
             $table->timestamps();
         });

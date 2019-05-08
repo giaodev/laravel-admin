@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('title', $title)
 @section('content')
-<div class="row">
+<div class="">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">{{ $title }}</h3>
@@ -43,9 +43,9 @@
                         </td>
                         <td>
                             @if($value->cate_status == 1)
-                            <a class="btn btn-success">Công khai</a>
+                            <a class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
                             @else
-                            <a class="btn btn-warning">Riêng tư</a>
+                            <a class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
                             @endif
                         </td>
                         <td><a class="btn btn-info" href="{{ route('category.edit',[$value->id]) }}"><span class="
@@ -58,6 +58,9 @@
                       @endif
                   </tbody>
               </table>
+              <div class="text-center">
+                {{ $data->links() }}
+              </div>
           </div>
       </div>
   </div>

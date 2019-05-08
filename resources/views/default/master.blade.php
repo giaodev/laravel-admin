@@ -33,8 +33,9 @@
       </nav>
       <div class="jumbotron jumbotron-header">
         <div class="container">
+            <div class="row">
           <div class="col-sm-2">
-            <img src="{{ ($setting->logo != "") ? $setting->logo : "" }}" alt="" height="100">
+            <a href="/" title="Trang chủ"><img src="{{ ($setting->logo != "") ? $setting->logo : "" }}" alt="" height="100"></a>
           </div>
           <div class="col-sm-6 search">
               <form action="" method="POST" role="form">
@@ -46,12 +47,11 @@
             <img src="/frontend/images/hotline.jpg" alt="" width="150">
             <span class="phone">0978.432.882</span>
         </div>
+    </div>
         </div>
       </div>
         @include('default.module.menu')
-        <div class="container">
             @yield('banner')
-        </div>
     </header>
     <main>
       <div class="container">
@@ -59,7 +59,20 @@
       </div>
     </main>
     <footer>
-
+        <div class="jumbotron jumbotron-footer">
+          <div class="container">
+            <div class="row">
+                @if($footer)
+                    @foreach($footer as $foot)
+                        <div class="col-sm-3 footer">
+                            <h4>{{ $foot->widget_title }}</h4>
+                            <div>{!! $foot->widget_content !!}</div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+          </div>
+        </div>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

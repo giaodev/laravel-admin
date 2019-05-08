@@ -44,7 +44,7 @@
                         <td><a href="{{ route('product.edit',[$value->id]) }}">{{ $value->product_title }}</a></td>
                         <td>{{ number_format($value->product_price) }}</td>
                         <td>{{ number_format($value->product_promotion) }}</td>
-                        <td>
+                        <td width="200">
                             @php
                             $categories = DB::table('category')->join('pc','pc.category_id','=','category.id')->where('pc.product_id', $value->id)->get();
                             @endphp
@@ -54,9 +54,9 @@
                         </td>
                         <td>
                             @if($value->product_active == 1)
-                            <a class="btn btn-success">Công khai</a>
+                            <a class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
                             @else
-                            <a class="btn btn-warning">Riêng tư</a>
+                            <a class="btn btn-warning"><span class="glyphicon glyphicon-remove"></a>
                             @endif
                         </td>
                         <td><a class="btn btn-info" href="{{ route('product.edit',[$value->id]) }}"><span class="

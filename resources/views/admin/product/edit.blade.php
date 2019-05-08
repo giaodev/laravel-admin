@@ -96,6 +96,19 @@
         </div>
     </div>
 </div>
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Chuyên mục chính</h3>
+      </div>
+      <div class="panel-body">
+        <div class="">
+          <select name="cate_primary_id" id="" class="form-control">
+            <option value="0">Không chọn</option>
+            {{ callCategories($listCate2, 0,"--",$data->cate_primary_id) }}
+          </select>
+        </div>
+    </div>
+</div>
 <div class="panel panel-default list_item">
     <div class="panel-heading">
       <h3 class="panel-title">Thuộc tính sản phẩm</h3>
