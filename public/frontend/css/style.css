@@ -255,7 +255,7 @@ a:hover{
 }
 .search button{
     position: absolute;
-    right:0;
+    right:15px;
     top:0;
     background-color:#132749;
 }
@@ -299,4 +299,9 @@ a:hover{
 .filter .item_filter{
     margin-top:5px;
     margin-bottom:5px;
+}
+.single-news .content img{
+    max-width: 100%;
+    height:auto !important;
+    width:unset !important;
 }

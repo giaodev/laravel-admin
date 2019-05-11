@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('title', $title)
 @section('content')
-<div class="row">
+<div class="">
     <form class="form-horizontal" role="form" action="{{ route('image.edit',['id' => $data->id]) }}" method="post">
       <div class="panel panel-default col-md-9">
         <div class="panel-heading row">

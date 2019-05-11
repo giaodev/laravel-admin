@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('title', $title)
 @section('content')
-<div class="row">
+<div class="">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">{{ $title }}</h3>

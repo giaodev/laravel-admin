@@ -1,0 +1,19 @@
+@media screen and (max-width: 767px){
+    .jumbotron-header{
+        text-align: center;
+    }
+    .hotline{
+        text-align: center;
+         padding-top: 25px;
+    }
+    .hotline img{
+        width: 80px;
+    }
+    .jumbotron-header span.phone{
+        font-size: 1.5em;
+        line-height: unset;
+    }
+    .search{
+        margin-top:15px;
+    }
+}

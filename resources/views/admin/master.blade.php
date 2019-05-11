@@ -24,7 +24,7 @@
     @section('sidebar')
     <div class="col-sm-2">
     <ul class="nav nav-pills nav-stacked left-menu">
-        <li><img src="https://via.placeholder.com/150" alt="..." class="img-responsive img-circle avatar-user"></li>
+        <li><img src="adm/images/logo.png" alt="..." class="img-responsive avatar-user"></li>
         <li><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Trang Chủ</a></li>
         <li class="dropdown">
           <a href="{{ route('news.index') }}" class="dropdown-toggle"> <span class="glyphicon glyphicon-plus"></span> Bài viết <span class="caret"></span></a>

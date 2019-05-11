@@ -15,6 +15,7 @@ use App\Models\Widget;
 use DB;
 use Cart;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 class HomeController extends Controller
 {
     public $data;
@@ -26,6 +27,7 @@ class HomeController extends Controller
     public function index(){
         $setting = $this->data['setting'];
         $this->data['title'] = $setting->homepage_title;
+        $this->data['description'] = $setting->homepage_description;
         $this->data['banner'] = Images::where(['images_type' => 1,'images_status' => 1])->orderby('created_at','desc')->get();
         $this->data['icon'] = Images::where(['images_type' => 6,'images_status' => 1])->orderby('images_orderby','desc')->get();
         $this->data['product_new'] = Product::orderby('id','desc')->limit('8')->get();
@@ -67,7 +69,9 @@ class HomeController extends Controller
         // DB::enableQueryLog();
         $this->data['category'] = Category::find($id);
         $category = $this->data['category'];
-        $this->data['title'] = $category->cate_title;
+        $this->data['title'] = ($category->cate_title != "") ? $category->cate_title : $category->cate_name;
+        $this->data['description'] = $category->cate_description;
+        $this->data['url'] = $category->cate_slug;
         if ($request->all() != "") {
             $query = DB::table('product');
             foreach($request->all() as $key => $value){
@@ -92,7 +96,9 @@ class HomeController extends Controller
     public function news($id){
         $this->data['category'] = Category::find($id);
         $category = $this->data['category'];
-        $this->data['title'] = $category->cate_title;
+        $this->data['title'] = ($category->cate_title != "") ? $category->cate_title : $category->cate_name;
+        $this->data['description'] = $category->cate_description;
+        $this->data['url'] = $category->cate_slug;
         $this->data['news'] = DB::table('news')
         ->join('nc','news.id','=','nc.new_id')
         ->join('category','nc.category_id','=','category.id')
@@ -114,6 +120,8 @@ class HomeController extends Controller
             $this->data['attr'] = "";
         }
         $this->data['title'] = ($data->product_title_seo) ? $data->product_title_seo : $data->product_title;
+        $this->data['description'] = ($data->product_description_seo) ? $data->product_description_seo : Str::limit($data->product_description,300,'');
+        $this->data['url'] = $data->product_slug;
         $this->data['cartTotalQuantity'] = Cart::getTotalQuantity();
         $this->data['related_product'] = Product::where('cate_primary_id', $data->cate_primary_id)->get();
     }
