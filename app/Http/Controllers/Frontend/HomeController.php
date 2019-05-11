@@ -93,6 +93,17 @@ class HomeController extends Controller
         $this->data['filter'] = Attr::where(['attr_filter' => 0, 'attr_active' => 1])->get();
 
     }
+    public function search(Request $request){
+        $this->data['title'] = "Tìm kiếm từ khóa ".$request->keyword;
+        $this->data['description'] = "";
+        $this->data['url'] = "";
+        if($request->all()){
+            $data = DB::table('product')
+            ->where('product_title','like','%'.$request->keyword.'%')->paginate(15);
+        }
+        $this->data['product'] = $data;
+        return view('default.page.search', $this->data);
+    }
     public function news($id){
         $this->data['category'] = Category::find($id);
         $category = $this->data['category'];

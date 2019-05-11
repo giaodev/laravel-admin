@@ -75,8 +75,8 @@
             <a href="/" title="Trang chủ"><img src="{{ ($setting->logo != "") ? $setting->logo : "" }}" alt="" height="100"></a>
           </div>
           <div class="col-sm-6 col-xs-12 search">
-              <form action="" method="POST" role="form">
-                  <input type="search" name="" id="input" class="form-control" value="" title="" placeholder="Nhập từ khóa cần tìm kiếm..">
+              <form action="{{ route('search') }}" method="get" role="form">
+                  <input type="search" name="keyword" id="input" class="form-control" value="" title="" placeholder="Nhập từ khóa cần tìm kiếm..">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
               </form>
           </div>
