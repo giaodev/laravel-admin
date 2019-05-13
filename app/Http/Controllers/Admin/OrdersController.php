@@ -9,7 +9,7 @@ class OrdersController extends Controller
 {
  public function getIndex(){
         $data['title'] = "Danh sách đơn hàng";
-        $data['data'] = orders::all();
+        $data['data'] = orders::orderby('created_at','desc')->paginate(15);
         return view('admin.orders.index', $data);
     }
     public function getAdd(){

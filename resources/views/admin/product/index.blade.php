@@ -69,6 +69,9 @@
                       @endif
                   </tbody>
               </table>
+              <div class="text-center">
+                {{ $data->links() }}
+              </div>
               <div class="text-right">
               <button class="btn btn-danger" onclick="return confirm('Bạn muốn xóa bản ghi này?')">Delete All</button>
               </div>

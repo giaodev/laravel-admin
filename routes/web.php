@@ -79,7 +79,7 @@ Route::namespace('Admin')->middleware('checklogin')->group(function(){
     Route::prefix('admin')->group(function(){
         /* Group User */
         Route::prefix('dashboard')->group(function(){
-            Route::get('/', 'HomeController@getIndex')->name('home.index');
+            Route::get('/', 'HomeController@index')->name('home.index');
         });
         /* Group User */
         Route::prefix('user')->group(function(){

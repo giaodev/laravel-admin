@@ -72,7 +72,7 @@ class HomeController extends Controller
         $this->data['title'] = ($category->cate_title != "") ? $category->cate_title : $category->cate_name;
         $this->data['description'] = $category->cate_description;
         $this->data['url'] = $category->cate_slug;
-        if ($request->all() != "") {
+        if ($request->all() != NULL) {
             $query = DB::table('product');
             foreach($request->all() as $key => $value){
                 $query = $query->where('attr_id','like', '%'. $value . '%');

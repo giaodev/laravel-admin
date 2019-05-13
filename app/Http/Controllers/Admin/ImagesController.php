@@ -14,7 +14,7 @@ class ImagesController extends Controller
  public function getIndex()
     {
         $data['title'] = "Danh sách hình ảnh";
-        $data['data'] = Images::all();
+        $data['data'] = Images::orderby('created_at','desc')->paginate(15);
         return view('admin.images.index', $data);
     }
 

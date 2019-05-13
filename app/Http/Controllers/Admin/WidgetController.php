@@ -12,7 +12,7 @@ class WidgetController extends Controller
 public function getIndex()
     {
         $data['title'] = "Danh sách widget";
-        $data['data'] = widget::paginate(15);
+        $data['data'] = widget::orderby('created_at','desc')->paginate(15);
         return view('admin.widget.index', $data);
     }
 

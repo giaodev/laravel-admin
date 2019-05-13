@@ -1,6 +1,9 @@
 body{
     font-size: 13px;
 }
+a:hover{
+    text-decoration: none;
+}
 ul li{
     list-style-type: none;
 }
@@ -67,4 +70,11 @@ ul.menu li.main-menu li{
 .table>tbody>tr>td, .table>thead>tr>th{
     vertical-align: middle;
     text-align: center;
+}
+.dashboard h3 {
+    font-size: 1.5em;
+    text-align: center;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: bold;
 }

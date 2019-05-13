@@ -46,6 +46,7 @@ class CategoryController extends Controller
         $cate->cate_order = $cate_order;
         $cate->cate_type = $request->cate_type;
         $cate->cate_status = $request->cate_status;
+        $cate->cate_has_submenu = $request->cate_has_submenu;
         $cate->cate_parent = $request->cate_parent;
         if($request->cate_type2 != ""){
             $cate->cate_type2 = $request->cate_type2;
@@ -77,6 +78,7 @@ class CategoryController extends Controller
         $cate->cate_order = $cate_order;
         $cate->cate_type = $request->cate_type;
         $cate->cate_status = $request->cate_status;
+        $cate->cate_has_submenu = $request->cate_has_submenu;
         $cate->cate_parent = $request->cate_parent;
         if($request->cate_type2 != ""){
             $cate->cate_type2 = $request->cate_type2;

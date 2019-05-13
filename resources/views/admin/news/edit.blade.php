@@ -45,8 +45,9 @@
   </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="col-sm-3">
+<div class="panel panel-default list_item">
+    <div class="panel-heading ">
       <h3 class="panel-title">Trạng thái</h3>
   </div>
   <div class="panel-body">
@@ -59,8 +60,8 @@
 </div>
 </div>
 
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading ">
       <h3 class="panel-title">Chuyên mục</h3>
   </div>
   <div class="panel-body">
@@ -69,8 +70,8 @@
     </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading ">
       <h3 class="panel-title">Thẻ</h3>
   </div>
   <div class="panel-body">
@@ -95,8 +96,8 @@
     </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading ">
       <h3 class="panel-title">Hình ảnh</h3>
   </div>
   <div class="panel-body">
@@ -106,6 +107,7 @@
     <div id="output">
         <img src="{{ $data->news_image }}" alt="" class="img-responsive">
     </div>
+</div>
 </div>
 </div>
 </form>

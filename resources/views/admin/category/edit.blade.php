@@ -2,13 +2,12 @@
 @section('title', $title)
 @section('content')
 <div class="">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <form class="form-horizontal" role="form" action="{{ route('category.edit',['id' => $data->id]) }}" method="post">
+    <div class="panel panel-default col-md-9">
+        <div class="panel-heading row">
             <h3 class="panel-title">{{ $title }}</h3>
         </div>
         <div class="panel-body">
-            <form class="form-horizontal" role="form" action="{{ route('category.edit',['id' => $data->id]) }}" method="post">
-                <div class="col-sm-8">
                     @include('status.errors')
                     @include('status.mess')
                     @csrf
@@ -55,43 +54,74 @@
                             <button type="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="cate_type" class=" control-label">Loại chuyên mục</label>
-                        <select name="cate_type" id="input" class="form-control" required="required" multiple="">
-                            <optgroup label="Thể loại">
-                                <option value="1" {{ ($data->cate_type == 1) ? "selected" : "" }}>Sản phẩm</option>
-                                <option value="2" {{ ($data->cate_type == 2) ? "selected" : "" }}>Bài viết</option>
-                                <option value="3" {{ ($data->cate_type == 3) ? "selected" : "" }}>Trang</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="cate_status" class=" control-label">Trạng thái</label>
-                        <select name="cate_status" id="input" class="form-control" required="required" multiple="">
-                            <optgroup label="Thể loại">
-                                <option value="1" {{ ($data->cate_status == 1) ? "selected" : "" }}>Công khai</option>
-                                <option value="2" {{ ($data->cate_status == 2) ? "selected" : "" }}>Riêng tư</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cate_type2" class=" control-label">Menu mục</label>
-                        <select name="cate_type2" id="input" class="form-control" multiple="">
-                            <optgroup label="Loại menu">
-                                <option value="0">Không chọn</option>
-                                <option value="1" {{ ($data->cate_type2 == 1) ? "selected" : "" }}>Primary Menu</option>
-                                <option value="2" {{ ($data->cate_type2 == 2) ? "selected" : "" }}>Left Menu</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                </div>
-            </form>
-
         </div>
     </div>
+
+    <div class="col-sm-3">
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Loại chuyên mục</h3>
+      </div>
+      <div class="panel-body">
+        <div class="">
+            <select name="cate_type" id="input" class="form-control" required="required" multiple="">
+                <optgroup label="Thể loại">
+                    <option value="1" {{ ($data->cate_type == 1) ? "selected" : "" }}>Sản phẩm</option>
+                    <option value="2" {{ ($data->cate_type == 2) ? "selected" : "" }}>Bài viết</option>
+                    <option value="3" {{ ($data->cate_type == 3) ? "selected" : "" }}>Trang</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    </div>
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Trạng thái</h3>
+      </div>
+      <div class="panel-body">
+        <div class="">
+            <select name="cate_status" id="input" class="form-control" required="required" multiple="">
+                <optgroup label="Thể loại">
+                    <option value="1" {{ ($data->cate_status == 1) ? "selected" : "" }}>Công khai</option>
+                    <option value="2" {{ ($data->cate_status == 2) ? "selected" : "" }}>Riêng tư</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    </div>
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Bật tắt sub-menu</h3>
+      </div>
+      <div class="panel-body">
+        <div class="">
+            <select name="cate_has_submenu" id="input" class="form-control" required="required">
+                <optgroup label="Bật tắt sub-menu">
+                    <option value="1" {{ ($data->cate_has_submenu == 1) ? "selected" : "" }}>Tắt</option>
+                    <option value="2" {{ ($data->cate_has_submenu == 2) ? "selected" : "" }}>Bật</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    </div>
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Menu mục</h3>
+      </div>
+      <div class="panel-body">
+        <div class="">
+            <select name="cate_type2" id="input" class="form-control" multiple="">
+                <optgroup label="Loại menu">
+                    <option value="0">Không chọn</option>
+                    <option value="1" {{ ($data->cate_type2 == 1) ? "selected" : "" }}>Primary Menu</option>
+                    <option value="2" {{ ($data->cate_type2 == 2) ? "selected" : "" }}>Left Menu</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    </div>
+    </div>
+    </form>
 </div>
 @endsection
 @section('g_footer')

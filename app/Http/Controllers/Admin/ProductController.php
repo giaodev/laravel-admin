@@ -21,7 +21,8 @@ class ProductController extends Controller
         $data['data'] = DB::table('product')
         ->join('users', 'users.id', '=', 'product.user_id')
         ->select('product.*', 'users.name', 'users.username')
-        ->get();
+        ->orderby('created_at','desc')
+        ->paginate(15);
         return view('admin.product.index', $data);
     }
     public function getSearch(Request $request){

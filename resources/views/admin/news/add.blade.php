@@ -45,22 +45,25 @@
   </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
-      <h3 class="panel-title">Trạng thái</h3>
-  </div>
-  <div class="panel-body">
-    <div class="">
-        <select name="news_active" id="" class="form-control">
-            <option value="1">Công khai</option>
-            <option value="2">Riêng tư</option>
-        </select>
-    </div>
-</div>
-</div>
 
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+
+<div class="col-md-3">
+
+    <div class="panel panel-default list_item">
+        <div class="panel-heading ">
+          <h3 class="panel-title">Trạng thái</h3>
+      </div>
+      <div class="panel-body">
+        <div class="">
+            <select name="news_active" id="" class="form-control">
+                <option value="1">Công khai</option>
+                <option value="2">Riêng tư</option>
+            </select>
+        </div>
+    </div>
+    </div>
+<div class="panel panel-default list_item">
+    <div class="panel-heading ">
       <h3 class="panel-title">Chuyên mục</h3>
   </div>
   <div class="panel-body">
@@ -69,8 +72,8 @@
     </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading ">
       <h3 class="panel-title">Thẻ</h3>
   </div>
   <div class="panel-body">
@@ -85,14 +88,15 @@
     </div>
 </div>
 </div>
-<div class="panel panel-default col-md-3 list_item">
-    <div class="panel-heading row">
+<div class="panel panel-default list_item">
+    <div class="panel-heading">
       <h3 class="panel-title">Hình ảnh</h3>
   </div>
   <div class="panel-body">
     <a onclick="openPopup()">Upload</a>
     <input name="news_image" id="url" type="hidden">
     <div id="output"></div>
+</div>
 </div>
 </div>
 </form>

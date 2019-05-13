@@ -19,7 +19,7 @@ class NewsController extends Controller
     public function getIndex()
     {
         $data['title'] = "Danh sách sản phẩm";
-        $data['data'] = News::orderby('id', 'desc')->paginate(10);
+        $data['data'] = News::orderby('id', 'desc')->paginate(15);
         return view('admin.news.index', $data);
     }
     public function getSearch(Request $request){

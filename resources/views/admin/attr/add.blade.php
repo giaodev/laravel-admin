@@ -1,15 +1,14 @@
 @extends('admin.master')
 @section('title', $title)
 @section('content')
-<div class="row">
-    <div class="panel panel-default">
+<div class="">
+    <div class="panel panel-default col-sm-8">
         <div class="panel-heading">
             <h3 class="panel-title">{{ $title }}</h3>
         </div>
         <div class="panel-body">
             <div class="row">
                 <form class="form-horizontal" role="form" action="{{ route('category.add') }}" method="post">
-                    <div class="col-sm-8">
                         @include('status.errors')
                         @include('status.mess')
                         @csrf
@@ -55,7 +54,6 @@
                                 <button type="submit" class="btn btn-primary">Cập nhật</button>
                             </div>
                         </div>
-                    </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <select name="cate_type" id="input" class="form-control" required="required" multiple="">

@@ -28,9 +28,9 @@
                         <td>{{ $value->widget_title }}</td>
                         <td>
                             @if($value->widget_status == 1)
-                            <a class="btn btn-success">Công khai</a>
+                            <a class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
                             @else
-                            <a class="btn btn-warning">Riêng tư</a>
+                            <a class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
                             @endif
                         </td>
                         <td><a class="btn btn-info" href="{{ route('widget.edit',[$value->id]) }}"><span class="glyphicon glyphicon-edit"></span></a>

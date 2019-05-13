@@ -19,7 +19,7 @@ class LoginController extends Controller
         $username = $request->username;
         $password = $request->password;
         if (Auth::attempt(['username' => $username, 'password' => $password])) {
-            return redirect()->intended('admin/user');
+            return redirect()->intended('admin/dashboard');
         } else {
             $request->session()->flash('status', 'Login Failed');
             return back();

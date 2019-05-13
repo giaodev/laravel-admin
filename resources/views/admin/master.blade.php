@@ -25,7 +25,7 @@
     <div class="col-sm-2">
     <ul class="nav nav-pills nav-stacked left-menu">
         <li><img src="adm/images/logo.png" alt="..." class="img-responsive avatar-user"></li>
-        <li><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Trang Chủ</a></li>
+        <li><a href="{{ route('home.index') }}"><span class="glyphicon glyphicon-dashboard"></span> Trang Chủ</a></li>
         <li class="dropdown">
           <a href="{{ route('news.index') }}" class="dropdown-toggle"> <span class="glyphicon glyphicon-plus"></span> Bài viết <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -83,24 +83,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Xem giao diện</a>
+                    <a class="navbar-brand" href="/" target="_blank">Xem giao diện</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
@@ -109,13 +97,9 @@
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">{{ Auth::user()->username }}</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{-- {{ Auth::user()->username }} --}} <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">{{ Auth::user()->level }}</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
                                 <li class="divider"></li>
                                 <li><a href="logout">Logout</a></li>
                             </ul>
