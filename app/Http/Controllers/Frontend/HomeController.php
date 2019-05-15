@@ -30,7 +30,10 @@ class HomeController extends Controller
         $this->data['description'] = $setting->homepage_description;
         $this->data['banner'] = Images::where(['images_type' => 1,'images_status' => 1])->orderby('created_at','desc')->get();
         $this->data['icon'] = Images::where(['images_type' => 6,'images_status' => 1])->orderby('images_orderby','desc')->get();
-        $this->data['product_new'] = Product::orderby('id','desc')->limit('8')->get();
+        $this->data['slider_category'] = Category::where(['cate_parent' => 2, 'cate_status' => 1])->orderby('cate_order','desc')->select('cate_name','cate_title','cate_image','cate_slug')->get();
+        $this->data['product_new'] = Product::orderby('created_at','desc')->limit('8')->get();
+        // $this->data['rt_poster'] = Images::where('id',9)->select("images_avatar","images_title")->first();
+        $this->data['product_hot'] = Product::orderby('created_at','desc')->where('product_type',1)->limit('8')->get();
         return view('default.page.home', $this->data);
 
     }

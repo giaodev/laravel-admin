@@ -51,6 +51,9 @@ class CategoryController extends Controller
         if($request->cate_type2 != ""){
             $cate->cate_type2 = $request->cate_type2;
         }
+        if($request->cate_image != ""){
+            $cate->cate_image = $request->cate_image;
+        }
         $cate->save();
         $request->session()->flash('status', 'Task was successful!');
         return back();
@@ -82,6 +85,9 @@ class CategoryController extends Controller
         $cate->cate_parent = $request->cate_parent;
         if($request->cate_type2 != ""){
             $cate->cate_type2 = $request->cate_type2;
+        }
+        if($request->cate_image != ""){
+            $cate->cate_image = $request->cate_image;
         }
         $cate->save();
         $request->session()->flash('status', 'Task was successful!');

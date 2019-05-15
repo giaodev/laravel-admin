@@ -2,111 +2,123 @@
 <?xml-stylesheet href="/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
-	<loc>http://donghotinvu.com</loc>
+	<loc>https://authenticwatch.vn</loc>
 		<priority>1.0</priority>
 		<lastmod>2012-08-26T01:10:00+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-reef-tiger-rga8239-pwb.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-reef-tiger-rga8239-pbb.html</loc>
 		<priority>0.3</priority>
-		<lastmod>2019-04-30T13:51:14+07:00</lastmod>
+		<lastmod>2019-05-13T13:06:29+07:00</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-reef-tiger-rga8239-pll.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-reef-tiger-rga8239-pwb.html</loc>
 		<priority>0.3</priority>
-		<lastmod>2019-04-30T13:50:52+07:00</lastmod>
+		<lastmod>2019-05-05T11:20:01+07:00</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-op-op89322adk-t-ht.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-reef-tiger-rga8239-pll.html</loc>
 		<priority>0.3</priority>
-		<lastmod>2019-04-30T13:24:41+07:00</lastmod>
+		<lastmod>2019-05-05T11:20:08+07:00</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/cung-tim-hieu-co-che-tourbillon-den-tu-thuong-hieu-reef-tiger.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-op-op89322adk-t-ht.html</loc>
 		<priority>0.3</priority>
-		<lastmod>2019-05-01T23:34:03+07:00</lastmod>
+		<lastmod>2019-05-05T11:19:00+07:00</lastmod>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-orient.html</loc>
+	<loc>https://authenticwatch.vn/cung-tim-hieu-co-che-tourbillon-den-tu-thuong-hieu-reef-tiger.html</loc>
+		<priority>0.3</priority>
+		<lastmod>2019-05-01T16:34:03+07:00</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+	<loc>https://authenticwatch.vn/bao-hanh.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-30T01:25:51+07:00</lastmod>
+		<lastmod>2019-05-06T09:40:39+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-bentley.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-orient.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T01:12:29+07:00</lastmod>
+		<lastmod>2019-04-29T18:25:51+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-reef-tiger.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-bentley.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T01:11:52+07:00</lastmod>
+		<lastmod>2019-04-28T18:12:29+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-olym-pianus.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-reef-tiger.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T00:35:52+07:00</lastmod>
+		<lastmod>2019-04-28T18:11:52+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/lien-he.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-olym-pianus.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T00:35:39+07:00</lastmod>
+		<lastmod>2019-04-28T17:35:52+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/kien-thuc-dong-ho.html</loc>
+	<loc>https://authenticwatch.vn/lien-he.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T00:35:26+07:00</lastmod>
+		<lastmod>2019-05-06T09:40:50+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-quartz.html</loc>
+	<loc>https://authenticwatch.vn/kien-thuc-dong-ho.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T00:33:53+07:00</lastmod>
+		<lastmod>2019-04-28T17:35:26+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-automatic.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-quartz.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T00:33:42+07:00</lastmod>
+		<lastmod>2019-04-28T17:33:53+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-nu.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-automatic.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T00:33:29+07:00</lastmod>
+		<lastmod>2019-04-28T17:33:42+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-nam.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-nu.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T00:33:15+07:00</lastmod>
+		<lastmod>2019-04-28T17:33:29+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/thuong-hieu.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-nam.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-29T00:33:00+07:00</lastmod>
+		<lastmod>2019-04-28T17:33:15+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/dong-ho-thuy-sy.html</loc>
+	<loc>https://authenticwatch.vn/thuong-hieu.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-04-28T19:44:26+07:00</lastmod>
+		<lastmod>2019-05-11T12:21:57+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://donghotinvu.com/tag/dong-ho-reef-tiger.html</loc>
+	<loc>https://authenticwatch.vn/dong-ho-thuy-sy.html</loc>
 		<priority>0.5</priority>
-		<lastmod>2019-05-01T23:34:03+07:00</lastmod>
+		<lastmod>2019-05-08T08:18:18+07:00</lastmod>
+		<changefreq>daily</changefreq>
+	</url>
+	<url>
+	<loc>https://authenticwatch.vn/tag/dong-ho-reef-tiger.html</loc>
+		<priority>0.5</priority>
+		<lastmod>2019-05-01T16:34:03+07:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 </urlset>

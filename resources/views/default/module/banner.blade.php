@@ -1,9 +1,13 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    @if($banner)
+    <?php $i=0; ?>
+        @foreach($banner as $item)
+        <?php $i++; ?>
+        <li data-target="#carousel-example-generic" data-slide-to="{{ $i }}" class="{{ ($i == 1) ? "active" : "" }}"></li>
+        @endforeach
+    @endif
   </ol>
 
   <!-- Wrapper for slides -->

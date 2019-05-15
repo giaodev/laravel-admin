@@ -7,7 +7,6 @@
     }
     .hotline{
         text-align: center;
-         padding-top: 25px;
     }
     .hotline img{
         width: 80px;
@@ -16,7 +15,10 @@
         font-size: 1.5em;
         line-height: unset;
     }
-    .search{
-        margin-top:15px;
+    .hide-if-mobile{
+        display:none;
+    }
+    .navbar-nav{
+        margin: unset;
     }
 }

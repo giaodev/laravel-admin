@@ -12,34 +12,44 @@ a {
 a:hover{
     text-decoration: none;
 }
+@media (min-width: 1200px){
+    .container {
+        width: 1280px;
+    }
+}
 .navbar-top, .jumbotron-header, .navbar-primary{
     margin-bottom:0px;
 }
 .navbar-top{
     display: block;
-    background-color: #132749;
+    background-color: #e6e7e9;
     width: 100%;
     border:unset;
     min-height: 40px;
     border-radius: unset;
 }
 .navbar-top li a{
-    color:#fff !important;
-    padding-top:unset;
-    padding-bottom:unset;
-    line-height: 40px;
+    color:#666666 !important;
 }
 @media screen and (min-width: 768px){
     .jumbotron-header {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .navbar-top li a{
+        padding-top:unset;
+        padding-bottom:unset;
+        line-height: 40px;
+    }
+    .logo img{
+        padding:10px;
     }
 }
 .jumbotron-header{
     background-color: #fff;
 }
 .hotline{
-    text-align: right;
+    margin-top: 15px;
 }
 .jumbotron-header .hotline img{
 }
@@ -50,14 +60,17 @@ a:hover{
     line-height: 100px;
 }
 .navbar-primary{
-    background-color: #132749;
+    background-color: #231f20;
     border:unset;
     border-radius: unset;
 }
 .navbar-primary ul li a{
     color:#fff !important;
-    font-weight: bold;
+    font-weight: normal;
     text-transform: uppercase;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+    background-color:#ed1b24;  
 }
 .navbar-primary ul li ul.sub-menu{
     display: none;
@@ -86,21 +99,20 @@ a:hover{
 .icon a {
     display: block;
     text-decoration: none;
-    color: #00a99d;
+    color: #000;
 }
 .icon img{
     display: block;
     float: left;
-    width: 86px;
-    height: 86px;
+    width: 55px;
+    height: 55px;
     margin-right: 15px;
 }
 .icon b {
     display: block;
-    line-height: 32px;
-    font-size: 24px;
-    font-weight: lighter;
-    padding-top: 12px;
+    font-size: 16px;
+    height: 26px;
+    padding-top: 6px;
 }
 .product .item{
     text-align: center;
@@ -251,15 +263,30 @@ a:hover{
     text-align: justify;
 }
 .search{
-    margin-top:35px;
+    margin-top:30px;
+}
+.search input[type=search]{
+    border-radius: 30px;
+    padding: 20px;
 }
 .search button{
+    border-radius: 30px;
     position: absolute;
-    right:15px;
-    top:0;
-    background-color:#132749;
+    top: 1px;
+    right: 20px;
+    z-index: 1;
+    background-color: #13274900;
+    color: #c0bebe;
+    border-color: #fff;
 }
-
+.search button:hover{
+    background-color: #13274900;
+    border-color:#fff;
+    color:#c0bede;
+}
+.search .glyphicon{
+    font-size: 1.5em;
+}
 .list_cart .old_price{
     text-decoration: line-through;
 }
@@ -294,7 +321,8 @@ a:hover{
 
 .jumbotron-footer {
     margin-bottom:0px;
-    margin-top:30px;
+    background-color:#231f20;
+    color:#fff;
 }
 .filter .item_filter{
     margin-top:5px;
@@ -304,4 +332,179 @@ a:hover{
     max-width: 100%;
     height:auto !important;
     width:unset !important;
+}
+.header-content__email {
+    padding-left: 60px;
+    padding-top: 15px;
+    height: 65px;
+    margin-right: 10px;
+    float: left;
+    background: url(../images/icon-email.png) left center no-repeat;
+}
+.header-content__hotline {
+    padding-left: 60px;
+    padding-top: 10px;
+    height: 65px;
+    float: left;
+    background: url(../images/icon-sp.png) left center no-repeat;
+}
+.header-content__email p, .header-content__hotline p {
+    line-height: 1.4;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+    font-size: 13px;
+}
+.header-content__hotline strong {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+}
+
+
+.slider-category{
+    height: 486px;
+    overflow: hidden;
+    margin-top: 30px;
+    background: #f2f2f2 url(../images/ga.png) no-repeat center top;
+}
+
+.slider-category img {
+    object-fit: cover;
+    height: 280px;
+    margin: 0 auto;
+}
+.slider-category h2{
+    text-align: center;
+    height: 80px;
+    font-size: 26px;
+    color: #414143;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.fz {
+    display: block;
+    height: 3px;
+    width: 40px;
+    background-color: #ef4136;
+    overflow: hidden;
+    border-top: solid 1px #ef4136;
+    border-bottom: solid 1px #ef4136;
+    margin-bottom: 15px;
+}
+
+.fi {
+    height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    padding-bottom:10px;
+}
+
+.footer p{
+    font-size: 14px;
+}
+footer .nkm {
+    margin-bottom:0px;
+    margin-top:15px;
+}
+footer .nkm h3{
+    display: block;
+    font-size: 28px;
+    color: #ed1b24;
+    padding-bottom: 3px;
+    text-transform: uppercase;
+}
+footer .nkm input{
+    overflow: hidden;
+    height: 54px;
+    float: left;
+    border: solid 1px #ef4138;
+}
+footer .nkm button{
+    position: absolute;
+    right: 15px;
+    top: 30px;
+    overflow: hidden;
+    height: 54px;
+    float: left;
+    border: solid 1px #ef4138;
+    background-color: red;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+footer .nkm .btn-default:hover, footer .nkm .btn-default:focus, footer .nkm .btn-default:active, footer .nkm .btn-default.active, footer .nkm .open .dropdown-toggle.btn-default{
+    border: solid 1px #ef4138;
+    background-color: red;
+}
+footer form{
+    margin-top:30px;
+}
+
+#back_to_top {
+  display: inline-block;
+  background-color: #ed1b24;
+  padding:15px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 0px;
+  color:#fff;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#back_to_top::after {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#back_to_top:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#back_to_top:active {
+  background-color: #555;
+}
+#back_to_top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Styles for the content section */
+
+.content {
+  font-family: 'Merriweather', serif;
+  font-size: 17px;
+  color: #6c767a;
+  line-height: 1.9;
+  text-align: justify;
+}
+.content h1 {
+  margin-bottom: -10px;
+  color: #03a9f4;
+  line-height: 1.5;
+}
+.content h3 {
+  font-style: italic;
+  color: #96a2a7;
+}
+
+.news img {
+    object-fit: cover;
+    height: 250px;
+    margin: 0 auto;
+}
+.news h3 {
+    font-size: 1.3em;
+}
+.icon_item{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

@@ -26,6 +26,7 @@ class CreateCategoryTable extends Migration
             $table->integer('cate_status')->default(1)->unsigned();
             $table->integer('cate_has_submenu')->default(1)->unsigned();
             $table->integer('cate_type2')->default(0)->unsigned();
+            $table->string('cate_image')->nullable();
             $table->timestamps();
         });
     }

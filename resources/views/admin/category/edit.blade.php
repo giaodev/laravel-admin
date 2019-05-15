@@ -120,12 +120,29 @@
         </div>
     </div>
     </div>
+
+    <div class="panel panel-default list_item">
+        <div class="panel-heading ">
+          <h3 class="panel-title">Hình ảnh</h3>
+      </div>
+      <div class="panel-body">
+        <a onclick="openPopup()">Upload</a>
+          <input name="cate_image" id="url1" type="hidden" value="{{ $data->cate_image }}">
+          <input name="cate_image_name" id="url2" type="hidden">
+        <div id="output">
+            <img src="{{ $data->cate_image }}" alt="" class="img-responsive">
+        </div>
+    </div>
+    </div>
+
+
     </div>
     </form>
 </div>
 @endsection
 @section('g_footer')
 <script src="ckeditor/ckeditor.js"></script>
+<script src="ckfinder/ckfinder.js"></script>
 <script>
   var editor = CKEDITOR.replace( 'cate_info', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
@@ -136,5 +153,26 @@
     filebrowserWindowHeight : '700'
 } );
   CKFinder.setupCKEditor( editor );
+
+  function openPopup() {
+      CKFinder.popup({
+          chooseFiles: true,
+          onInit: function (finder) {
+              finder.on('files:choose', function (evt) {
+                  var file = evt.data.files.first();
+                  document.getElementById('url1').value = file.getUrl();
+                  document.getElementById('url2').value = file.get('name');
+                  var output = document.getElementById( 'output' );
+                  output.innerHTML = '<img src='+file.getUrl()+' width="200" />'
+                  console.log(file);
+              });
+              finder.on('file:choose:resizedImage', function (evt) {
+                  document.getElementById('url').value = evt.data.resizedUrl;
+                  var output = document.getElementById( 'output' );
+                  output.innerHTML = '<img src='+evt.data.resizedUrl+' width="200" />'
+              });
+          }
+      });
+  }
 </script>
 @endsection

@@ -86,7 +86,7 @@ class ProductController extends Controller
         $product->product_type = $request->product_type;
         if($request->attr != ""){
             $attr_id = $request->attr;
-            $product->attr_id = json_encode($product_gallery);
+            $product->attr_id = json_encode($attr_id);
         }
         $product->cate_primary_id = $request->cate_primary_id;
         $product->user_id = Auth::user()->id;

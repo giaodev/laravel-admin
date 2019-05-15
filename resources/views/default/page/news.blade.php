@@ -12,7 +12,7 @@
            <img src="{{ $value->news_image }}" alt="{{ $value->news_title }}">
            <div class="caption">
              <h3>{{ $value->news_title }}</h3>
-             <p>{{ $value->news_description }}</p>
+             <p>{{ Str::limit($value->news_description,'100','..') }}</p>
            </div>
          </a>
        </div>

@@ -102,7 +102,7 @@
   </div>
   <div class="panel-body">
     <a onclick="openPopup()">Upload</a>
-      <input name="news_image" id="url" type="hidden">
+      <input name="news_image" id="url" type="hidden" value="{{ $data->news_image }}">
       <input name="news_image_name" id="url2" type="hidden">
     <div id="output">
         <img src="{{ $data->news_image }}" alt="" class="img-responsive">

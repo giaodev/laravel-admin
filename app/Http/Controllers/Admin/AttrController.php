@@ -12,7 +12,7 @@ class AttrController extends Controller
 {
     public function getIndex(){
         $data['title'] = "Danh sách thuộc tính";
-        $data['data'] = Attr::orderBy('attr_orderby','desc')->get();
+        $data['data'] = Attr::orderBy('attr_orderby','desc')->paginate(15);
         $data['listAttr'] = Attr::all();
         return view('admin.attr.index', $data);
     }

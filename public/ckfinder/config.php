@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'donghotinvu.com';
-$config['licenseKey']  = 'B929ELWHYMJEDZPFALDY55HYQ4MA6';
+$config['licenseName'] = 'authenticwatch.vn';
+$config['licenseKey']  = '13D3XW9W324PU4TRK7P19YY9GRLFQ';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir

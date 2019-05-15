@@ -120,6 +120,16 @@
         </div>
     </div>
     </div>
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Hình ảnh</h3>
+      </div>
+      <div class="panel-body">
+        <a onclick="openPopup()">Upload</a>
+        <input name="news_image" id="url" type="hidden">
+        <div id="output"></div>
+    </div>
+    </div>
     </div>
 
    </form>
@@ -127,6 +137,7 @@
 @endsection
 @section('g_footer')
 <script src="ckeditor/ckeditor.js"></script>
+<script src="ckfinder/ckfinder.js"></script>
 <script>
   var editor = CKEDITOR.replace( 'cate_info', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
@@ -136,5 +147,24 @@
     filebrowserWindowWidth : '1000',
     filebrowserWindowHeight : '700'
 } );
+    function openPopup() {
+        CKFinder.popup({
+            chooseFiles: true,
+            onInit: function (finder) {
+                finder.on('files:choose', function (evt) {
+                    var file = evt.data.files.first();
+                    document.getElementById('url').value = file.getUrl();
+                    var output = document.getElementById( 'output' );
+                    output.innerHTML = '<img src='+file.getUrl()+' class="img-responsive" />'
+                });
+                finder.on('file:choose:resizedImage', function (evt) {
+                    document.getElementById('url').value = evt.data.resizedUrl;
+                    var output = document.getElementById( 'output' );
+                    output.innerHTML = '<img src='+evt.data.resizedUrl+' class="img-responsive" />'
+                });
+            }
+        });
+    }
+  </script>
 </script>
 @endsection
