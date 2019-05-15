@@ -170,4 +170,18 @@ class NewsController extends Controller
             return back();
         }
     }
+    public function getDeleteAll(Request $request){
+        $id = $request->cb;
+        if($id != ""){
+              foreach($id as $uid){
+                 $pc = DB::table('nc')->where('news_id', $uid)->delete();
+                 $product = News::find($uid);
+                 if($product != ""){
+                     $product->delete();
+                 }
+             }
+             $request->session()->flash('status', 'Task was successful!');
+         }
+        return back();
+    }
 }

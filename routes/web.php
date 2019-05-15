@@ -132,6 +132,7 @@ Route::namespace('Admin')->middleware('checklogin')->group(function(){
             Route::get('edit/{id}', 'NewsController@getEdit')->name('news.edit');
             Route::post('edit/{id}', 'NewsController@postEdit')->name('news.edit');
             Route::get('delete/{id}', 'NewsController@getDelete')->name('news.delete');
+            Route::get('deleteall', 'NewsController@getDeleteAll')->name('news.deleteall');
         });
 
         /* Group Tag */

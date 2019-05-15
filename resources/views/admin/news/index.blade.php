@@ -17,9 +17,11 @@
                 </div>
             </form>
             <br>
+            <form action="{{ route('news.deleteall') }}" method="get" role="form">
             <table class="table table-bordered">
                 <thead>
                     <tr class="active">
+                        <th><input type="checkbox" id="checkAll"></th>
                         <th>STT</th>
                         <th>Tên</th>
                         <th>Chuyên mục</th>
@@ -33,6 +35,7 @@
                     @foreach($data as $value)
                     <?php $i++; ?>
                     <tr>
+                        <td><input type="checkbox" name="cb[]" value="{{ $value->id }}"></td>
                         <td>{{ $i }}</td>
                         <td><a href="{{ route('news.edit',[$value->id]) }}">{{ $value->news_title }}</a></td>
                         <td>
@@ -60,6 +63,10 @@
                   </tbody>
               </table>
               {{ $data->links() }}
+              <div class="text-right">
+              <button class="btn btn-danger" onclick="return confirm('Bạn muốn xóa bản ghi này?')">Delete All</button>
+              </div>
+              </form>
           </div>
       </div>
   </div>

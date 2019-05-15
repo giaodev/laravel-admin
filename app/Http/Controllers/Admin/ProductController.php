@@ -164,15 +164,15 @@ class ProductController extends Controller
     public function getDeleteAll(Request $request){
         $id = $request->cb;
         if($id != ""){
-          foreach($id as $uid){
-           $pc = DB::table('pc')->where('product_id', $uid)->delete();
-           $product = Product::find($uid);
-           if($product != ""){
-               $product->delete();
-           }
-       }
-       $request->session()->flash('status', 'Task was successful!');
-   }
-   return back();
-}
+              foreach($id as $uid){
+                 $pc = DB::table('pc')->where('product_id', $uid)->delete();
+                 $product = Product::find($uid);
+                 if($product != ""){
+                     $product->delete();
+                 }
+             }
+             $request->session()->flash('status', 'Task was successful!');
+         }
+        return back();
+    }
 }
