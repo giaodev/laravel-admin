@@ -56,6 +56,7 @@ Route::get('sitemap', function(){
 Route::namespace('Frontend')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('{slug}.html','HomeController@check_slug')->name('check_slug');
+    Route::get('filter','HomeController@filter')->name('filter');
     Route::get('search', 'HomeController@search')->name('search');
     Route::get('add_cart/{id}','HomeController@add_cart')->name('add_cart');
     Route::get('quick_cart/{id}','HomeController@quick_cart')->name('quick_cart');

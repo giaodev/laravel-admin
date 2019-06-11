@@ -92,7 +92,7 @@
             </tbody>
           </table>
           <div class="text-center">
-            {{ $data->links() }}
+            {{-- {{ $data->links() }} --}}
           </div>
         </div>
       </div>

@@ -21,4 +21,25 @@
     .navbar-nav{
         margin: unset;
     }
+    .product .item .title{
+        font-size: 1em;
+    }
+    .product .item img{
+        height:200px;
+    }
+}
+
+@media (max-width: 1300px){
+    .header-content__email{
+        display:none;
+    }
+    .navbar-primary ul li a{
+        font-size: 12px;
+    }
+    .gg .l{
+        font-size: 30px;
+    }
+    .addcart .btn{
+        font-size: 14px;
+    }
 }

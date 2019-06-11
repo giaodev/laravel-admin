@@ -12,17 +12,20 @@
           @include('status.mess')
           @csrf
           <div class="form-group">
+            <p><b>Link sản phẩm</b>: <a href="{{ route('check_slug',['slug' => $data->product_slug]) }}" target="_blank">{{ route('check_slug',['slug' => $data->product_slug]) }}</a></p>
+          </div>
+          <div class="form-group">
             <label for="product_title" class="control-label">Tiêu đề</label>
-            <input type="text" class="form-control" name="product_title" id="product_title" placeholder="Tiêu đề" value="{{ $data->product_title }}">
+            <input type="text" class="form-control" name="product_title" id="product_title" placeholder="Tiêu đề" value="{{ $data->product_title }}" required>
         </div>
         <div class="form-group">
             <label for="product_slug" class="control-label">Đường dẫn</label>
-            <input type="text" class="form-control" name="product_slug" id="product_slug" placeholder="Đường dẫn" value="{{ $data->product_slug }}">
+            <input type="text" class="form-control" name="product_slug" id="product_slug" placeholder="Đường dẫn" value="{{ $data->product_slug }}" required>
         </div>
 
         <div class="form-group">
             <label for="product_description" class="control-label">Mô tả ngắn</label>
-            <textarea name="product_description" id="product_description" class="form-control" rows="3">{{ $data->product_description }}</textarea>
+            <textarea name="product_description" id="product_description" class="form-control" rows="3" placeholder="Mô tả ngắn sản phẩm">{{ $data->product_description }}</textarea>
         </div>
         <div class="form-group">
             <label for="product_content" class="control-label">Nội dung</label>
@@ -35,7 +38,7 @@
 
         <div class="form-group">
             <label for="product_description_seo" class="control-label">Mô tả SEO</label>
-            <textarea name="product_description_seo" id="product_description_seo" class="form-control" rows="3">{{ $data->product_description_seo }}</textarea>
+            <textarea name="product_description_seo" id="product_description_seo" class="form-control" rows="3" placeholder="Mô tả SEO trên thẻ Meta">{{ $data->product_description_seo }}</textarea>
         </div>
         <div class="row">
             <div class="form-group">
@@ -95,6 +98,9 @@
             {{ listCategory($listCate, $pc) }}
         </div>
     </div>
+    <div class="panel-footer">
+      <p class="help-block">Chọn chuyên mục liên quan đến sản phẩm được chọn</p>
+    </div>
 </div>
     <div class="panel panel-default list_item">
         <div class="panel-heading">
@@ -108,6 +114,9 @@
           </select>
         </div>
     </div>
+    <div class="panel-footer">
+      <p class="help-block">Hiển thị các sản phẩm liên quan theo chuyên mục chính</p>
+    </div>
 </div>
 <div class="panel panel-default list_item">
     <div class="panel-heading">
@@ -117,6 +126,9 @@
     <div class="list_category">
         {{ listAttr($listAttr,$data->attr_id) }}
     </div>
+</div>
+<div class="panel-footer">
+  <p class="help-block">Hiển thị thuộc tính sản phẩm, bộ lọc sản phẩm ở bên ngoài</p>
 </div>
 </div>
 

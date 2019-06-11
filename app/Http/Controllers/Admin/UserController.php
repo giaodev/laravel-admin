@@ -24,7 +24,7 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
         $user->email = $request->email;
-        $user->level = 2;
+        $user->level = 1;
         $user->save();
         $request->session()->flash('status', 'Task was successful!');
         return back();
@@ -41,7 +41,7 @@ class UserController extends Controller
             $user->password = bcrypt($request->password);
         }
         $user->email = $request->email;
-        $user->level = 2;
+        $user->level = 1;
         $user->save();
         $request->session()->flash('status', 'Task was successful!');
         return back();

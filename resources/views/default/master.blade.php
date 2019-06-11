@@ -44,9 +44,9 @@
   <!-- End Facebook Add the following three tags inside head -->
 
   <!-- Bootstrap -->
-  <link href="gapp/css/bootstrap.min.css" rel="stylesheet">
-  <link href="frontend/css/style.css" rel="stylesheet">
-  <link href="frontend/css/responsive.css" rel="stylesheet">
+  <link href="gapp/css/bootstrap.min.css?v=1.2" rel="stylesheet">
+  <link href="frontend/css/style.css?v=1.2" rel="stylesheet">
+  <link href="frontend/css/responsive.css?v=1.2" rel="stylesheet">
   @yield('giaovn_header')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -56,7 +56,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="@yield('body_class')">
     <header>
       <nav class="navbar navbar-default navbar-top" role="navigation">
         <div class="container">
@@ -64,7 +64,7 @@
             <li><a href="#"><span class="glyphicon glyphicon-time"></span> Chuyên đồng hồ Authentic - Đồng hồ chính hãng tại Việt Nam</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="tel:0978432882"><span class="glyphicon glyphicon-earphone"></span> Hotline: 0978.432.882</a></li>
+            <li><a href="tel:0978432882"><span class="glyphicon glyphicon-earphone"></span> Hotline: 0965.764.248</a></li>
             <li><a href=""><span class="glyphicon glyphicon-map-marker"></span> Địa chỉ: Số 2 Ngõ 98 Thái Hà, Trung Liệt, Đống Đa, Hà Nội</a></li>
           </ul>
         </div><!-- /.container-fluid -->
@@ -85,11 +85,11 @@
               <div class="header-content">
                 <div class="header-content__email">
                   <p>Email liên hệ</p>
-                  <p><strong>giaovn1510@gmail.com</strong></p>
+                  <p><strong>authenticwatchvietnam@gmail.com</strong></p>
                 </div>
                 <div class="header-content__hotline">
                   <p>Hotline hỗ trợ</p>
-                  <p><strong>0978.432.882</strong></p>
+                  <p><strong>0965.764.248</strong></p>
                 </div>
               </div>
             </div>
@@ -107,6 +107,22 @@
     <footer>
       <div class="jumbotron nkm">
           <div class="container">
+            <div class="icon">
+                <div class="row">
+                    @if($icon)
+                    @foreach($icon as $value)
+                    <div class="col-xs-12 col-sm-12 col-md-4 icon_item">
+                        <a href="/">
+                            <img src="{{ $value->images_avatar }}" alt="{{ $value->images_title }}">
+                            <b>{{ $value->images_title }}</b>
+                            <span>{{ $value->images_description }}</span>
+                        </a>
+                    </div>
+                    @endforeach
+                    @endif
+                </div>
+            </div>
+            
             <div class="row">
               <div class="col-md-6 col-sm-12 col-xs-12">
                 <h3>Đăng ký là thành viên</h3>
@@ -144,7 +160,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="gapp/js/bootstrap.min.js"></script>
+    <script src="frontend/js/jquery.lazyloadxt.js"></script>
     <script src="frontend/js/js_code.js"></script>
     @yield('giaovn_footer')
+
+    <!-- Subiz -->
+    <script>
+      (function(s, u, b, i, z){
+        u[i]=u[i]||function(){
+          u[i].t=+new Date();
+          (u[i].q=u[i].q||[]).push(arguments);
+        };
+        z=s.createElement('script');
+        var zz=s.getElementsByTagName('script')[0];
+        z.async=1; z.src=b; z.id='subiz-script';
+        zz.parentNode.insertBefore(z,zz);
+      })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
+      subiz('setAccount', 'acqisgzimkqfimitdhby');
+    </script>
+    <!-- End Subiz -->
   </body>
   </html>

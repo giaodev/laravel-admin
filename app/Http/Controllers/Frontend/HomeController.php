@@ -23,17 +23,18 @@ class HomeController extends Controller
         $this->data['setting'] = Setting::find(1);
         $this->data['menu'] = Category::where(['cate_status' => 1, 'cate_type2' => 1])->orderby('cate_order','desc')->get();
         $this->data['footer'] = Widget::where(['widget_type' => 2, 'widget_status' => 1])->orderby('widget_order','asc')->get();
+        $this->data['icon'] = Images::where(['images_type' => 6,'images_status' => 1])->orderby('images_orderby','desc')->get();
     }
     public function index(){
         $setting = $this->data['setting'];
         $this->data['title'] = $setting->homepage_title;
         $this->data['description'] = $setting->homepage_description;
         $this->data['banner'] = Images::where(['images_type' => 1,'images_status' => 1])->orderby('created_at','desc')->get();
-        $this->data['icon'] = Images::where(['images_type' => 6,'images_status' => 1])->orderby('images_orderby','desc')->get();
         $this->data['slider_category'] = Category::where(['cate_parent' => 2, 'cate_status' => 1])->orderby('cate_order','desc')->select('cate_name','cate_title','cate_image','cate_slug')->get();
-        $this->data['product_new'] = Product::orderby('created_at','desc')->limit('8')->get();
+        $this->data['product_new'] = Product::orderby('created_at','desc')->limit('6')->get();
         // $this->data['rt_poster'] = Images::where('id',9)->select("images_avatar","images_title")->first();
-        $this->data['product_hot'] = Product::orderby('created_at','desc')->where('product_type',1)->limit('8')->get();
+        $this->data['product_hot'] = Product::orderby('created_at','desc')->where('product_type',1)->limit('6')->get();
+        $this->data['news'] = News::orderBy('created_at','desc')->limit(4)->get();
         return view('default.page.home', $this->data);
 
     }
@@ -75,26 +76,36 @@ class HomeController extends Controller
         $this->data['title'] = ($category->cate_title != "") ? $category->cate_title : $category->cate_name;
         $this->data['description'] = $category->cate_description;
         $this->data['url'] = $category->cate_slug;
-        if ($request->all() != NULL) {
-            $query = DB::table('product');
-            foreach($request->all() as $key => $value){
-                $query = $query->where('attr_id','like', '%'. $value . '%');
-            }
-            $data = $query->paginate(15);
-        } else {
-            $data = DB::table('product')
-            ->join('pc','product.id','=','pc.product_id')
-            ->join('category','pc.category_id','=','category.id')
-            ->select('product.*','pc.category_id','category.*')
-            ->where('category.cate_parent',$id)->orWhere('pc.category_id', $id)->paginate(15);
-        }
+        $data = DB::table('product')
+        ->join('pc','product.id','=','pc.product_id')
+        ->join('category','pc.category_id','=','category.id')
+        ->select('product.*','pc.category_id','category.*')
+        ->where('category.cate_parent',$id)->orWhere('pc.category_id', $id)->orderBy('product.created_at','desc')->paginate(12);   
         $this->data['product'] = $data;
+        $this->data['news'] = News::orderBy('created_at','desc')->limit(8)->get();
         // $query = DB::getQueryLog();
         // echo "<pre>";
         // print_r($query);
         // echo "</pre>";
         $this->data['filter'] = Attr::where(['attr_filter' => 0, 'attr_active' => 1])->get();
 
+    }
+    public function filter(Request $request){
+        $this->data['title'] = "Lọc sản phẩm";
+        $this->data['description'] = "";
+        $this->data['url'] = "";
+        if($request->all()){
+            $query = DB::table('product');
+            foreach($request->all() as $key => $value){
+                if (strpos($key, '_') !== false) {
+                    $query = $query->where('attr_id','like', '%'. str_replace('_','',$value) . '%');
+                }
+            }
+            $data = $query->paginate(9);
+        }
+        $this->data['product'] = $data;
+        $this->data['filter'] = Attr::where(['attr_filter' => 0, 'attr_active' => 1])->get();
+        return view('default.page.filter', $this->data);
     }
     public function search(Request $request){
         $this->data['title'] = "Tìm kiếm từ khóa ".$request->keyword;
@@ -126,6 +137,7 @@ class HomeController extends Controller
     }
     public function single_product($id){
         $this->data['data'] = Product::find($id);
+        $this->data['list_brand'] = Category::where('cate_parent', 2)->get();
         $data = $this->data['data'];
         if($data->attr_id != NULL){
             $attr_id = json_decode($data->attr_id);
@@ -137,7 +149,9 @@ class HomeController extends Controller
         $this->data['description'] = ($data->product_description_seo) ? $data->product_description_seo : Str::limit($data->product_description,300,'');
         $this->data['url'] = $data->product_slug;
         $this->data['cartTotalQuantity'] = Cart::getTotalQuantity();
-        $this->data['related_product'] = Product::where('cate_primary_id', $data->cate_primary_id)->get();
+        $this->data['related_product'] = Product::where('cate_primary_id', $data->cate_primary_id)->limit(8)->get();
+        $this->data['news'] = News::orderBy('created_at','desc')->limit(8)->get();
+        
     }
     public function add_cart($id){
         $data = Product::find($id);
@@ -236,6 +250,7 @@ class HomeController extends Controller
     }
     public function single_news($id){
         $this->data['data'] = News::find($id);
+        $this->data['list_brand'] = Category::where('cate_parent', 2)->get();
         $data = $this->data['data'];
         $this->data['title'] = ($data->news_title_seo) ? $data->news_title_seo : $data->news_title;
     }

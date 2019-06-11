@@ -8,11 +8,12 @@ use App\Models\Attr;
 use App\Http\Requests\AddAttrRequest;
 use App\Http\Requests\EditAttrRequest;
 use Illuminate\Support\Str;
+use DB;
 class AttrController extends Controller
 {
     public function getIndex(){
         $data['title'] = "Danh sách thuộc tính";
-        $data['data'] = Attr::orderBy('attr_orderby','desc')->paginate(15);
+        $data['data'] = Attr::orderBy('attr_orderby','desc')->get();
         $data['listAttr'] = Attr::all();
         return view('admin.attr.index', $data);
     }

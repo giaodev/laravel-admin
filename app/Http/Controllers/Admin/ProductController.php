@@ -99,7 +99,7 @@ class ProductController extends Controller
             ]);
         }
         $request->session()->flash('status', 'Task was successful!');
-        return back();
+        return redirect()->route('product.edit',['id' => $last_insert_id]);
     }
     public function getEdit($id){
         $data['title'] = 'Cập nhật sản phẩm';

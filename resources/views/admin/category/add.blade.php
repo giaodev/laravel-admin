@@ -126,7 +126,7 @@
       </div>
       <div class="panel-body">
         <a onclick="openPopup()">Upload</a>
-        <input name="news_image" id="url" type="hidden">
+        <input name="news_image" id="url1" type="hidden">
         <div id="output"></div>
     </div>
     </div>
@@ -153,12 +153,12 @@
             onInit: function (finder) {
                 finder.on('files:choose', function (evt) {
                     var file = evt.data.files.first();
-                    document.getElementById('url').value = file.getUrl();
+                    document.getElementById('url1').value = file.getUrl();
                     var output = document.getElementById( 'output' );
                     output.innerHTML = '<img src='+file.getUrl()+' class="img-responsive" />'
                 });
                 finder.on('file:choose:resizedImage', function (evt) {
-                    document.getElementById('url').value = evt.data.resizedUrl;
+                    document.getElementById('url1').value = evt.data.resizedUrl;
                     var output = document.getElementById( 'output' );
                     output.innerHTML = '<img src='+evt.data.resizedUrl+' class="img-responsive" />'
                 });

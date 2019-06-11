@@ -167,7 +167,7 @@
                   console.log(file);
               });
               finder.on('file:choose:resizedImage', function (evt) {
-                  document.getElementById('url').value = evt.data.resizedUrl;
+                  document.getElementById('url1').value = evt.data.resizedUrl;
                   var output = document.getElementById( 'output' );
                   output.innerHTML = '<img src='+evt.data.resizedUrl+' width="200" />'
               });

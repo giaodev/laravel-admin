@@ -1,16 +1,15 @@
 @extends('default.master')
 
 @section('title', $title)
-
 @section('content')
-    <div class="product">
+    <div class="product">  
         <div class="row filter pdt30">
-            <form action="" method="get">
+            <form action="{{ route('filter') }}" method="get">
             @if($filter)
                 @foreach($filter as $val)
                     @if($val->attr_parent == 0)
                         <div class="col-sm-3 item_filter">
-                        <select class="form-control" name="{{ $val->attr_slug }}" onchange='if(this.value != 0) { this.form.submit(); }'>
+                        <select class="form-control" name="_{{ $val->attr_slug }}" onchange='if(this.value != 0) { this.form.submit(); }'>
                             <option selected="true" disabled="disabled">{{ $val->attr_name }}</option>
                         @foreach($filter as $val2)
                             @if($val2->attr_parent == $val->id)
@@ -36,16 +35,17 @@
             </div>
             </form>
         </div>
+
         <div class="row">
             @if($product)
                 <div class="col-md-12 text-right">
                     <span class="count_item">Tìm thấy {{ $product->count() }} sản phẩm</span>
                 </div>
                 @foreach($product as $value)
-                    <div class="col-sm-6 col-md-3">
+                    <div class="col-xs-6 col-sm-6 col-md-3">
                         <div class="item">
                         <a href="{{ route('check_slug',['slug' => $value->product_slug]) }}" class="">
-                            <img src="{{ $value->product_image }}" alt="{{ $value->product_title }}"
+                            <img data-src="{{ $value->product_image }}" alt="{{ $value->product_title }}"
                                  class="img-responsive">
                             <div class="info_pro">
                                 <div class="hot_ico"></div>
@@ -61,7 +61,6 @@
                                             <span class="price">{{ number_format($value->product_price) }}</span>
                                         @endif
                                     </p>
-                                    <p>Tình trạng: Sẵn Hàng</p>
                                 </div>
                                 <p class="muangay"><a href="{{ route('quick_cart',['id' => $value->id]) }}">Mua ngay</a>
                                 </p>
@@ -72,5 +71,43 @@
                 @endforeach
             @endif
         </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                {{ $product->appends(Request::input())->links() }}
+            </div>
+        </div>
+        <h1 class="title text-center">{{ $title }}</h1>     
+        @if($category->cate_info != NULL)
+        <div class="category_info pdt30">
+            <div class="row">
+                <div class="col-sm-5">
+                    <img src="{{ $category->cate_image }}" alt="" class="img-responsive">
+                </div>
+                <div class="col-sm-7 cate_description">
+                    {!! $category->cate_info !!}
+                </div>
+            </div>
+        </div>
+        @endif
+
+        <div class="news pdt30">
+        <h2 class="e_title">Tin tức mới nhất</h2>
+        <div class="row">
+          @if($news)
+            @foreach($news as $value)
+             <div class="col-sm-6 col-md-3">
+               <a class="thumbnail" href="{{ route('check_slug',['slug' => $value->news_slug]) }}">
+                <div class="avatar" style="background-image:url({{ $value->news_image }})" alt="{{ $value->news_title }}"></div>
+                 <div class="caption">
+                   <h3>{{ $value->news_title }}</h3>
+                   <p>{{ Str::limit($value->news_description,'100','..') }}</p>
+                 </div>
+               </a>
+             </div>
+            @endforeach
+          @endif
+        </div>
+        </div>
+
     </div>
 @endsection

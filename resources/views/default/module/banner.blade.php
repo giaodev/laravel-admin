@@ -17,7 +17,7 @@
         @foreach($banner as $item)
         <?php $stt++; ?>
             <div class="item {{ ($stt == 1) ? 'active' : '' }}">
-              <img src="{{ $item->images_avatar }}" alt="{{ $item->images_title }}">
+              <img data-src="{{ $item->images_avatar }}" alt="{{ $item->images_title }}">
               <div class="carousel-caption">
                 {{ $item->images_description }}
               </div>

@@ -22,16 +22,8 @@
 
       .slick-slide {
         transition: all ease-in-out .3s;
-        opacity: .2;
-      }
-      
-      .slick-active {
-        opacity: .5;
       }
 
-      .slick-current {
-        opacity: 1;
-      }
   </style>
 @endsection
 @section('banner')
@@ -39,25 +31,11 @@
 @endsection
 
 @section('content')
-<div class="icon pdt30">
-    <div class="row">
-        @if($icon)
-        @foreach($icon as $value)
-        <div class="col-xs-12 col-sm-12 col-md-4 icon_item">
-            <a href="/">
-                <img src="{{ $value->images_avatar }}" alt="{{ $value->images_title }}">
-                <b>{{ $value->images_title }}</b>
-                <span>{{ $value->images_description }}</span>
-            </a>
-        </div>
-        @endforeach
-        @endif
-    </div>
-</div>
+
 </div>
 <div class="jumbotron slider-category">
   <div class="container text-center">
-    <h2>Bộ sưu tập</h2>
+    <h2 class="e_title">Bộ sưu tập</h2>
     <section class="center slider">
       @if($slider_category)
         @foreach($slider_category as $val)
@@ -73,14 +51,14 @@
 <div class="container">
 
 <div class="product sph text-center">
-    <h2>Sản phẩm HOT</h2>
+    <h2 class="e_title">Sản phẩm HOT</h2>
     <div class="row">
           @if($product_hot)
           @foreach($product_hot as $value)
-          <div class="col-xs-6 col-sm-6 col-md-3">
+          <div class="col-xs-6 col-sm-6 col-md-4">
               <div class="item">
               <a href="{{ route('check_slug',['slug' => $value->product_slug]) }}" title="{{ $value->product_title }}" class="">
-                <img src="{{ $value->product_image }}" alt="{{ $value->product_title }}" title="{{ $value->product_title }}" class="img-responsive">
+                <img data-src="{{ $value->product_image }}" alt="{{ $value->product_title }}" title="{{ $value->product_title }}" class="img-responsive">
                   <div class="info_pro">
                       <div class="hot_ico"></div>
                       <h3 class="title">
@@ -94,7 +72,6 @@
                               <span class="price">{{ number_format($value->product_price) }}</span>
                               @endif
                           </p>
-                          <p>Tình trạng: {{ ($value->product_active == 1) ? "Sẵn Hàng" : "Chờ hàng" }}</p>
                       </div>
                       <p class="muangay"><a href="{{ route('quick_cart',['id' => $value->id]) }}">Mua ngay</a>
                       </p>
@@ -109,13 +86,13 @@
 
 <div class="product pdt30 text-center">
     <div class="row">
-    <h2>Sản phẩm mới</h2>
+    <h2 class="e_title">Sản phẩm mới</h2>
         @if($product_new)
         @foreach($product_new as $value)
-        <div class="col-xs-6 col-sm-6 col-md-3">
+        <div class="col-xs-6 col-sm-6 col-md-4">
             <div class="item">
             <a href="{{ route('check_slug',['slug' => $value->product_slug]) }}" title="{{ $value->product_title }}" class="">
-              <img src="{{ $value->product_image }}" alt="{{ $value->product_title }}" title="{{ $value->product_title }}" class="img-responsive">
+              <img data-src="{{ $value->product_image }}" alt="{{ $value->product_title }}" title="{{ $value->product_title }}" class="img-responsive">
                 <div class="info_pro">
                     <div class="hot_ico"></div>
                     <h3 class="title">
@@ -129,7 +106,6 @@
                             <span class="price">{{ number_format($value->product_price) }}</span>
                             @endif
                         </p>
-                        <p>Tình trạng: {{ ($value->product_active == 1) ? "Sẵn Hàng" : "Chờ hàng" }}</p>
                     </div>
                     <p class="muangay"><a href="{{ route('quick_cart',['id' => $value->id]) }}">Mua ngay</a>
                     </p>
@@ -141,6 +117,26 @@
     @endif
 </div>
 </div>
+
+<div class="news pdt30">
+<h2 class="e_title">Tin tức mới nhất</h2>
+<div class="row">
+  @if($news)
+    @foreach($news as $value)
+     <div class="col-sm-6 col-md-3">
+       <a class="thumbnail" href="{{ route('check_slug',['slug' => $value->news_slug]) }}">
+        <div class="avatar" style="background-image:url({{ $value->news_image }})" alt="{{ $value->news_title }}"></div>
+         <div class="caption">
+           <h3>{{ $value->news_title }}</h3>
+           <p>{{ Str::limit($value->news_description,'100','..') }}</p>
+         </div>
+       </a>
+     </div>
+    @endforeach
+  @endif
+</div>
+</div>
+
 @endsection
 
 @section('giaovn_footer')
@@ -151,6 +147,9 @@
             centerMode: true,
             centerPadding: '60px',
             slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
             responsive: [
               {
                 breakpoint: 768,

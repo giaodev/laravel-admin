@@ -13,16 +13,16 @@
           @csrf
           <div class="form-group">
             <label for="product_title" class="control-label">Tiêu đề</label>
-            <input type="text" class="form-control" name="product_title" id="title" onkeyup="ChangeToSlug();" placeholder="Tiêu đề" value="{{ old('product_title') }}">
+            <input type="text" class="form-control" name="product_title" id="title" onkeyup="ChangeToSlug();" placeholder="Tiêu đề" value="{{ old('product_title') }}" required>
         </div>
         <div class="form-group">
             <label for="product_slug" class="control-label">Đường dẫn</label>
-            <input type="text" class="form-control" name="product_slug" id="slug" placeholder="Đường dẫn" value="{{ old('product_slug') }}">
+            <input type="text" class="form-control" name="product_slug" id="slug" placeholder="Đường dẫn" value="{{ old('product_slug') }}" required>
         </div>
 
         <div class="form-group">
             <label for="product_description" class="control-label">Mô tả ngắn</label>
-            <textarea name="product_description" id="product_description" class="form-control" rows="3">{{ old('product_description') }}</textarea>
+            <textarea name="product_description" id="product_description" class="form-control" rows="3" placeholder="Mô tả ngắn sản phẩm">{{ old('product_description') }}</textarea>
         </div>
         <div class="form-group">
             <label for="product_content" class="control-label">Nội dung</label>
@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <label for="product_description_seo" class="control-label">Mô tả SEO</label>
-            <textarea name="product_description_seo" id="product_description_seo" class="form-control" rows="3">{{ old('product_description_seo') }}</textarea>
+            <textarea name="product_description_seo" id="product_description_seo" class="form-control" rows="3" placeholder="Mô tả SEO trên thẻ Meta">{{ old('product_description_seo') }}</textarea>
         </div>
 
         <div class="row">
@@ -98,6 +98,9 @@
             {{ listCategory($listCate) }}
         </div>
     </div>
+    <div class="panel-footer">
+      <p class="help-block">Chọn chuyên mục liên quan đến sản phẩm được chọn</p>
+    </div>
 </div>
 
     <div class="panel panel-default list_item">
@@ -112,6 +115,9 @@
           </select>
         </div>
     </div>
+    <div class="panel-footer">
+      <p class="help-block">Hiển thị các sản phẩm liên quan theo chuyên mục chính</p>
+    </div>
 </div>
 <div class="panel panel-default list_item">
     <div class="panel-heading">
@@ -122,6 +128,9 @@
         {{ listAttr($listAttr) }}
     </div>
 </div>
+  <div class="panel-footer">
+    <p class="help-block">Hiển thị thuộc tính sản phẩm, bộ lọc sản phẩm ở bên ngoài</p>
+  </div>
 </div>
 
 <div class="panel panel-default list_item">
