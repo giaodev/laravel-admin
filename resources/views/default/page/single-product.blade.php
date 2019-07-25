@@ -18,7 +18,7 @@
                     @endphp
                     <div class="item {{ ($stt == 1) ? "active" : "" }}">
                     	<a href="{{ $image }}" data-lightbox="roadtrip">
-                        <img data-src="{{ $image }}" alt="{{ $data->product_title }}">
+                        <img src="{{ $image }}" alt="{{ $data->product_title }}">
                     		<div class="carousel-caption">
                     		</div>
                     	</a>
@@ -38,7 +38,7 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
 
-        <div class="row">
+        <div class="row" id="thumbnail_img">
             @php
             $gallery = explode('|', $data->product_gallery);
             $stt = 0;
@@ -67,7 +67,7 @@
     <h1>{{ $data->product_title }}</h1>
     <p class="description">{{ $data->product_description }}</p>
     @if($attr)
-    <table class="table table-striped">
+    <table class="table table-striped attributes">
         @foreach($attr as $val)
         @if($val->attr_parent == 0)
         <tr>
@@ -128,16 +128,16 @@
 <div class="col-sm-3">
 	<ul class="nav nav-pills nav-stacked sidebar-product">
         <h3>Hỗ trợ trực tuyến</h3>
-        <li><a href="#"><b><span class="glyphicon glyphicon-earphone"></span> Hotline:</b> 0978.432.882</a></li>
-        <li><a href="#"><b><span class="glyphicon glyphicon-earphone"></span> Hotline:</b> 0978.432.882</a></li>
-        <li><a href="#"><b><span class="glyphicon glyphicon-earphone"></span> Hotline:</b> 0978.432.882</a></li>
+        <li><a href="#"><b><span class="glyphicon glyphicon-earphone"></span> Hotline:</b> 0965.764.248</a></li>
+        <li><a href="#"><b><span class="glyphicon glyphicon-earphone"></span> Hotline:</b> 0965.764.248</a></li>
+        <li><a href="#"><b><span class="glyphicon glyphicon-earphone"></span> Hotline:</b> 0965.764.248</a></li>
     </ul>
 </div>
 </div>
 <div class="col-sm-9 product_full">
     <!-- Nav tabs -->
     @if($data->product_content != NULL)
-    <ul class="nav nav-tabs" role="tablist">
+    <ul class="nav nav-tabs tablist" role="tablist">
       <li class="active"><a href="#noidung" role="tab" data-toggle="tab">Thông tin sản phẩm</a></li>
       <li><a href="#chinhsach" role="tab" data-toggle="tab">Chính sách</a></li>
       <li><a href="#huongdan" role="tab" data-toggle="tab">Hướng dẫn</a></li>
@@ -155,9 +155,6 @@
   </div>
 </div>
 @endif
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=203245897024576&autoLogAppEvents=1"></script>
-<div class="fb-comments" data-href="{{ route('check_slug',['slug', $data->product_slug]) }}" data-width="100%" data-numposts="5"></div>
 </div>
 <div class="col-sm-3">
 
@@ -205,7 +202,7 @@
       @foreach($news as $value)
       <div class="col-sm-6 col-md-3">
          <a class="thumbnail" href="{{ route('check_slug',['slug' => $value->news_slug]) }}">
-            <div class="avatar" style="background-image:url({{ $value->news_image }})" alt="{{ $value->news_title }}"></div>
+        <img data-src="{{ $value->news_image }}" alt="{{ $value->news_title }}" class="img-responsive">
             <div class="caption">
              <h3>{{ $value->news_title }}</h3>
              <p>{{ Str::limit($value->news_description,'100','..') }}</p>

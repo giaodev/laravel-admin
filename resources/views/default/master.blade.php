@@ -31,22 +31,21 @@
   <meta itemprop="name" content="{{ (isset($title)) ? $title : "" }}" />
   <meta itemprop="url" content="{{ (isset($url) && $url != "") ? asset($url).".html" : asset('/') }}" />
   <meta itemprop="description" content="{{ (isset($description)) ? $description : "" }}" />
-
   <!-- End Google+ Add the following three tags inside head -->
   <!-- Facebook Add the following three tags inside head -->
-  <meta property="og:title" content="{{ (isset($title)) ? $title : "" }}" />
-  <meta property="og:type" content="product" />
   <meta property="og:url" content="{{ (isset($url) && $url != "") ? asset($url).".html" : asset('/') }}" />
-
-  <meta property="og:site_name" content="{{ asset('/') }}" />
+  <meta property="og:type" content="product" />
+  <meta property="og:title" content="{{ (isset($title)) ? $title : "" }}" />
   <meta property="og:description" content="{{ (isset($description)) ? $description : "" }}" />
+   <meta property="og:image" content="{{ (isset($og_image)) ? asset($og_image) : asset($setting->homepage_image) }}" />
+  <meta property="og:site_name" content="{{ asset('/') }}" />
   <meta property="fb:admins" content="" />
   <!-- End Facebook Add the following three tags inside head -->
 
   <!-- Bootstrap -->
-  <link href="gapp/css/bootstrap.min.css?v=1.2" rel="stylesheet">
-  <link href="frontend/css/style.css?v=1.2" rel="stylesheet">
-  <link href="frontend/css/responsive.css?v=1.2" rel="stylesheet">
+  <link href="gapp/css/bootstrap.min.css?v=1.4" rel="stylesheet">
+  <link href="frontend/css/style.css?v=1.4" rel="stylesheet">
+  <link href="frontend/css/responsive.css?v=1.4" rel="stylesheet">
   @yield('giaovn_header')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -163,21 +162,5 @@
     <script src="frontend/js/jquery.lazyloadxt.js"></script>
     <script src="frontend/js/js_code.js"></script>
     @yield('giaovn_footer')
-
-    <!-- Subiz -->
-    <script>
-      (function(s, u, b, i, z){
-        u[i]=u[i]||function(){
-          u[i].t=+new Date();
-          (u[i].q=u[i].q||[]).push(arguments);
-        };
-        z=s.createElement('script');
-        var zz=s.getElementsByTagName('script')[0];
-        z.async=1; z.src=b; z.id='subiz-script';
-        zz.parentNode.insertBefore(z,zz);
-      })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
-      subiz('setAccount', 'acqisgzimkqfimitdhby');
-    </script>
-    <!-- End Subiz -->
   </body>
   </html>

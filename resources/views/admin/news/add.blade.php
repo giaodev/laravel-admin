@@ -38,6 +38,11 @@
             <label for="news_description_seo" class="control-label">Mô tả SEO</label>
             <textarea name="news_description_seo" id="news_description_seo" class="form-control" rows="3">{{ old('news_description_seo') }}</textarea>
         </div>
+
+        <div class="form-group">
+            <label for="news_scripts_header" class="control-label">Mã nhúng header</label>
+            <textarea name="news_scripts_header" id="news_scripts_header" class="form-control" rows="3">{{ old('news_scripts_header') }}</textarea>
+        </div>
     <div class="form-group">
         <div class="">
           <button type="submit" class="btn btn-primary">Thêm mới</button>
@@ -72,6 +77,25 @@
     </div>
 </div>
 </div>
+
+    <div class="panel panel-default list_item">
+        <div class="panel-heading">
+          <h3 class="panel-title">Bài viết thuộc sản phẩm</h3>
+      </div>
+      <div class="panel-body">
+        <div class="">
+          <select name="news_related_product" id="" class="form-control">
+            <option value="0">Không chọn</option>
+            {{ callMenu($listCate3) }}
+          </select>
+        </div>
+    </div>
+    <div class="panel-footer">
+      <p class="help-block">Phần chọn này giúp cho các danh mục sản phẩm hiển thị bài viết liên quan</p>
+    </div>
+</div>
+
+
 <div class="panel panel-default list_item">
     <div class="panel-heading ">
       <h3 class="panel-title">Thẻ</h3>

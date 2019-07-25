@@ -42,7 +42,7 @@
               <td><input type="checkbox" name="cb[]" value="{{ $value->id }}"></td>
               <td>#{{ $value->id }}</td>
               <td><img src="{{ $value->product_image }}" width="80" /></td>
-              <td><p><a href="{{ route('product.edit',[$value->id]) }}">{{ $value->product_title }}</a></p>
+              <td><p><a target="_blank" href="{{ route('product.edit',[$value->id]) }}">{{ $value->product_title }}</a></p>
                 <p>
                   Giá sp: {{ number_format($value->product_price) }} / Giá giảm: {{ number_format($value->product_promotion) }}
                 </p>

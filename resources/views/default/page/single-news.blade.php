@@ -5,7 +5,7 @@
 @section('content')
   <div class="single-news pdt30">
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-9 article_news">
         <h1 class="title">{{ $data->news_title }}</h1>
         <div class="content">
           {!! $data->news_content !!}

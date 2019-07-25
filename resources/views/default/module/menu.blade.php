@@ -32,7 +32,7 @@
             @endif
             @endforeach
             @endif
-            <li><a href="{{ route('cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng ({{ Cart::getTotalQuantity() }})</a></li>
+{{--             <li><a href="{{ route('cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng ({{ Cart::getTotalQuantity() }})</a></li> --}}
         </ul>
     </div><!-- /.navbar-collapse -->
 </div>

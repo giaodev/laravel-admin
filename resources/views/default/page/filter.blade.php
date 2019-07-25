@@ -22,9 +22,6 @@
                     @endif
                 @endforeach
             @endif
-            <div class="col-sm-3 pull-float">
-                <a href="" class="btn btn-default">Reset</a>
-            </div>
             <div class="sorting-orderby text-right col-sm-3 pull-right item_filter">
                 <select name="" id="" class="form-control" onchange='if(this.value != 0) { this.form.submit(); }'>
                     <option selected="true" disabled="disabled">Mặc định</option>

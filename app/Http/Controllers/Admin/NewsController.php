@@ -31,6 +31,7 @@ class NewsController extends Controller
     {
         $data['title'] = "Thêm mới sản phẩm";
         $data['listCate'] = Category::where('cate_type', 2)->get();
+        $data['listCate3'] = Category::where('cate_type',1)->get();
         $data['listTag'] = Tag::where('tag_status', 1)->get();
         return view('admin.news.add', $data);
     }
@@ -62,7 +63,12 @@ class NewsController extends Controller
             $news_description_seo = $request->news_description_seo;
             $news->news_description_seo = $news_description_seo;
         }
-        $news->news_active = 1;
+        if ($request->news_scripts_header != "") {
+            $news_scripts_header = $request->news_scripts_header;
+            $news->news_scripts_header = $news_scripts_header;
+        }
+        $news->news_related_product = $request->news_related_product;
+        $news->news_active = $request->news_active;
         $news->user_id = Auth::user()->id;
         $news->save();
         $last_insert_id = $news->id;
@@ -95,6 +101,7 @@ class NewsController extends Controller
         $data['title'] = 'Cập nhật sản phẩm';
         $data['data'] = news::find($id);
         $data['listCate'] = Category::where('cate_type', '2')->get();
+        $data['listCate3'] = Category::where('cate_type',1)->get();
         $data['nc'] = DB::table('nc')->where('new_id', $id)->get();
         $data['listTag'] = Tag::where('tag_status', 1)->get();
         $news = $data['data'];
@@ -128,7 +135,12 @@ class NewsController extends Controller
             $news_description_seo = $request->news_description_seo;
             $news->news_description_seo = $news_description_seo;
         }
-        $news->news_active = 1;
+        if ($request->news_scripts_header != "") {
+            $news_scripts_header = $request->news_scripts_header;
+            $news->news_scripts_header = $news_scripts_header;
+        }
+        $news->news_related_product = $request->news_related_product;
+        $news->news_active = $request->news_active;
         $news->user_id = Auth::user()->id;
         $news->save();
         $nc = DB::table('nc')->where('new_id', $id)->delete();

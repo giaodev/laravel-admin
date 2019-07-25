@@ -1,2 +1,5 @@
-User-agent: *
-Disallow:
+User-Agent: *
+Allow: /uploads/
+Disallow: /quick_cart/
+Disallow: /search?
+Sitemap: https://authenticwatch.vn/sitemap.xml

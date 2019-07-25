@@ -23,6 +23,7 @@
                     <tr class="active">
                         <th><input type="checkbox" id="checkAll"></th>
                         <th>STT</th>
+                        <th>Hình ảnh</th>
                         <th>Tên</th>
                         <th>Chuyên mục</th>
                         <th>Trạng Thái</th>
@@ -36,8 +37,9 @@
                     <?php $i++; ?>
                     <tr>
                         <td><input type="checkbox" name="cb[]" value="{{ $value->id }}"></td>
-                        <td>{{ $i }}</td>
-                        <td><a href="{{ route('news.edit',[$value->id]) }}">{{ $value->news_title }}</a></td>
+                        <td>#{{ $value->id }}</td>
+                        <td><img src="{{ $value->news_image }}" width="80" /></td>
+                        <td><a target="_blank" href="{{ route('news.edit',[$value->id]) }}">{{ $value->news_title }}</a></td>
                         <td>
                             @php
                             $categories = DB::table('category')->join('nc','nc.category_id','=','category.id')->where('nc.new_id', $value->id)->get();

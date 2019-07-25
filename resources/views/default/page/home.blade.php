@@ -58,7 +58,9 @@
           <div class="col-xs-6 col-sm-6 col-md-4">
               <div class="item">
               <a href="{{ route('check_slug',['slug' => $value->product_slug]) }}" title="{{ $value->product_title }}" class="">
-                <img data-src="{{ $value->product_image }}" alt="{{ $value->product_title }}" title="{{ $value->product_title }}" class="img-responsive">
+              <div class="background_image">
+          <img data-src="{{ $value->product_image }}" alt="{{ $value->product_title }}" title="{{ $value->product_title }}" class="img-responsive">      
+              </div>
                   <div class="info_pro">
                       <div class="hot_ico"></div>
                       <h3 class="title">
@@ -92,7 +94,9 @@
         <div class="col-xs-6 col-sm-6 col-md-4">
             <div class="item">
             <a href="{{ route('check_slug',['slug' => $value->product_slug]) }}" title="{{ $value->product_title }}" class="">
-              <img data-src="{{ $value->product_image }}" alt="{{ $value->product_title }}" title="{{ $value->product_title }}" class="img-responsive">
+              <div class="background_image">
+          <img data-src="{{ $value->product_image }}" alt="{{ $value->product_title }}" title="{{ $value->product_title }}" class="img-responsive">      
+              </div>
                 <div class="info_pro">
                     <div class="hot_ico"></div>
                     <h3 class="title">
@@ -126,6 +130,7 @@
      <div class="col-sm-6 col-md-3">
        <a class="thumbnail" href="{{ route('check_slug',['slug' => $value->news_slug]) }}">
         <div class="avatar" style="background-image:url({{ $value->news_image }})" alt="{{ $value->news_title }}"></div>
+        <img data-src="{{ $value->news_image }}" alt="{{ $value->news_title }}" class="img-responsive">
          <div class="caption">
            <h3>{{ $value->news_title }}</h3>
            <p>{{ Str::limit($value->news_description,'100','..') }}</p>

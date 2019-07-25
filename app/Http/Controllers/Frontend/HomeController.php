@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use App\Models\Images;
 use App\Models\Category;
 use App\Models\Setting;
@@ -29,6 +30,7 @@ class HomeController extends Controller
         $setting = $this->data['setting'];
         $this->data['title'] = $setting->homepage_title;
         $this->data['description'] = $setting->homepage_description;
+        $this->data['og_image'] = $setting->homepage_image;
         $this->data['banner'] = Images::where(['images_type' => 1,'images_status' => 1])->orderby('created_at','desc')->get();
         $this->data['slider_category'] = Category::where(['cate_parent' => 2, 'cate_status' => 1])->orderby('cate_order','desc')->select('cate_name','cate_title','cate_image','cate_slug')->get();
         $this->data['product_new'] = Product::orderby('created_at','desc')->limit('6')->get();
@@ -46,8 +48,12 @@ class HomeController extends Controller
             switch ($category->cate_type) {
                  case '1':
                  $this->product($request, $category->id);
-                 return view('default.page.product', $this->data);
-
+                 if ($request->ajax()) {
+                     $view = view('default.page.data_product', $this->data)->render();
+                     return response()->json(['html'=>$view]);
+                 } else {
+                    return view('default.page.product', $this->data);
+                 }
                  break;
                  case '2':
                  $this->news($category->id);
@@ -80,15 +86,14 @@ class HomeController extends Controller
         ->join('pc','product.id','=','pc.product_id')
         ->join('category','pc.category_id','=','category.id')
         ->select('product.*','pc.category_id','category.*')
-        ->where('category.cate_parent',$id)->orWhere('pc.category_id', $id)->orderBy('product.created_at','desc')->paginate(12);   
+        ->where([['category.cate_parent',$id],['product.product_active',1]])->orWhere([['pc.category_id', $id],['product.product_active', 1]])->orderBy('product.created_at','desc')->paginate(12);   
         $this->data['product'] = $data;
-        $this->data['news'] = News::orderBy('created_at','desc')->limit(8)->get();
+        $this->data['news'] = News::where('news_related_product',$id)->where('news_active', 1)->orderBy('created_at','desc')->limit(8)->get();
         // $query = DB::getQueryLog();
         // echo "<pre>";
         // print_r($query);
         // echo "</pre>";
         $this->data['filter'] = Attr::where(['attr_filter' => 0, 'attr_active' => 1])->get();
-
     }
     public function filter(Request $request){
         $this->data['title'] = "Lọc sản phẩm";
@@ -119,6 +124,7 @@ class HomeController extends Controller
         return view('default.page.search', $this->data);
     }
     public function news($id){
+        // DB::enableQueryLog();
         $this->data['category'] = Category::find($id);
         $category = $this->data['category'];
         $this->data['title'] = ($category->cate_title != "") ? $category->cate_title : $category->cate_name;
@@ -128,7 +134,11 @@ class HomeController extends Controller
         ->join('nc','news.id','=','nc.new_id')
         ->join('category','nc.category_id','=','category.id')
         ->select('news.*','nc.category_id','category.*')
-        ->where('category.cate_parent',$id)->orWhere('nc.category_id', $id)->get();
+        ->where([['category.cate_parent',$id],['news.news_active', 1]])->orWhere([['nc.category_id', $id],['news.news_active', 1]])->orderBy('news.created_at', 'desc')->paginate(12);
+        // $query = DB::getQueryLog();
+        // echo "<pre>";
+        // print_r($query);
+        // echo "</pre>";
     }
     public function contact($id){
         $this->data['category'] = Category::find($id);
@@ -136,6 +146,7 @@ class HomeController extends Controller
         $this->data['title'] = $category->cate_title;
     }
     public function single_product($id){
+        $setting = $this->data['setting'];
         $this->data['data'] = Product::find($id);
         $this->data['list_brand'] = Category::where('cate_parent', 2)->get();
         $data = $this->data['data'];
@@ -147,6 +158,7 @@ class HomeController extends Controller
         }
         $this->data['title'] = ($data->product_title_seo) ? $data->product_title_seo : $data->product_title;
         $this->data['description'] = ($data->product_description_seo) ? $data->product_description_seo : Str::limit($data->product_description,300,'');
+        $this->data['og_image'] = ($data->product_image != "") ? $data->product_image : $setting->homepage_image;
         $this->data['url'] = $data->product_slug;
         $this->data['cartTotalQuantity'] = Cart::getTotalQuantity();
         $this->data['related_product'] = Product::where('cate_primary_id', $data->cate_primary_id)->limit(8)->get();
