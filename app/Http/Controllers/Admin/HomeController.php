@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function index(){
-        $data['title'] = "Dashboard Giao CMS";
+        $data['title'] = "Bảng điều khiển";
         return view('admin.home.index', $data);
     }
 }

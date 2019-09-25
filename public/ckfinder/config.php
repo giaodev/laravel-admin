@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'authenticwatch.vn';
-$config['licenseKey']  = '13D3XW9W324PU4TRK7P19YY9GRLFQ';
+$config['licenseName'] = 'tuvan.com';
+$config['licenseKey']  = '7424VQ6KB9V5NCXCEJ8QQMEM5B3KD';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
@@ -50,7 +50,7 @@ $config['privateDir'] = array(
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_images
 
 $config['images'] = array(
-    'maxWidth'  => 3000,
+    'maxWidth'  => 4000,
     'maxHeight' => 3000,
     'quality'   => 100,
     'sizes' => array(

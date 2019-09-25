@@ -8,15 +8,17 @@
         </div>
         <div class="panel-body">
             @include('status.mess')
-            <form action="{{ route('news.search') }}" method="GET" role="form">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <input type="search" name="keyword" class="form-control" id="" placeholder="Search..">
-                    </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <a href="{{ route('news.add') }}" class="btn btn-primary">Thêm mới</a>
+              </div>
+              <div class="col-md-6">
+                <form action="{{ route('news.search') }}" method="GET" role="form" class="navbar-form navbar-right searchform">
+                     <input type="search" name="keyword" class="form-control" id="" placeholder="Search..">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
             <form action="{{ route('news.deleteall') }}" method="get" role="form">
             <table class="table table-bordered">
                 <thead>

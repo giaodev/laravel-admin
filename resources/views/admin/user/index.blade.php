@@ -8,6 +8,17 @@
     </div>
     <div class="panel-body">
         @include('status.mess')
+        <div class="row">
+          <div class="col-md-6">
+            <a href="{{ route('user.add') }}" class="btn btn-primary">Thêm mới</a>
+          </div>
+          <div class="col-md-6">
+            <form action="" method="GET" role="form" class="navbar-form navbar-right searchform">
+                 <input type="search" name="keyword" class="form-control" id="" placeholder="Search..">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
         <table class="table table-bordered">
           <thead>
             <tr class="active">

@@ -2,7 +2,7 @@
 @section('title', $title)
 @section('content')
 <div class="">
-    <form class="form-horizontal" role="form" action="{{ route('product.add') }}" method="post">
+    <form class="form-horizontal" role="form" action="{{ route('product.add') }}" method="post" enctype="multipart/form-data">
       <div class="panel panel-default col-md-9">
         <div class="panel-heading row">
           <h3 class="panel-title">{{ $title }}</h3>
@@ -140,6 +140,7 @@
   <div class="panel-body">
     <a onclick="openPopup()">Upload</a>
     <input name="product_image" id="url" type="hidden">
+    {{-- <input type="file" name="product_image"> --}}
     <div id="output"></div>
 </div>
 </div>

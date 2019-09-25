@@ -1,18 +1,16 @@
+@if(isset($banner) && $banner != NULL)
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    @if($banner)
     <?php $i=0; ?>
         @foreach($banner as $item)
         <?php $i++; ?>
         <li data-target="#carousel-example-generic" data-slide-to="{{ $i }}" class="{{ ($i == 1) ? "active" : "" }}"></li>
         @endforeach
-    @endif
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" id="slide-image">
-    @if($banner)
     <?php $stt=0; ?>
         @foreach($banner as $item)
         <?php $stt++; ?>
@@ -23,9 +21,7 @@
               </div>
             </div>
         @endforeach
-    @endif
   </div>
-
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
@@ -34,3 +30,4 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
+@endif

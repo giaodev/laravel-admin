@@ -13,9 +13,11 @@ use Auth;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class NewsController extends Controller
 {
+    protected $size_image = 400;
     public function getIndex()
     {
         $data['title'] = "Danh sách sản phẩm";
@@ -38,7 +40,6 @@ class NewsController extends Controller
 
     public function postAdd(AddNewsRequest $request)
     {
-
         $news = new News();
         $news->news_title = $request->news_title;
         $slug = ($request->news_slug) ? $request->news_slug : $request->news_title;
@@ -51,6 +52,17 @@ class NewsController extends Controller
             $news_content = $request->news_content;
             $news->news_content = $news_content;
         }
+        // if ($request->hasFile('news_image') != "") {
+        //     $news_image = $request->file('news_image');
+        //     $image_icon = $news_image->getClientOriginalName();
+        //     $filename = pathinfo($image_icon, PATHINFO_FILENAME);
+        //     $extension = pathinfo($image_icon, PATHINFO_EXTENSION);
+        //     $directory = public_path('/uploads/avatar/');
+        //     Image::make($news_image)->resize(400, null, function($constraint){
+        //         $constraint->aspectRatio();
+        //     })->save($directory . $filename.time().'.'.$extension);
+        //     $news->news_image = '/uploads/avatar/' . $filename.time().'.'.$extension;
+        // }
         if ($request->news_image != "") {
             $news_image = $request->news_image;
             $news->news_image = $news_image;
@@ -93,7 +105,7 @@ class NewsController extends Controller
             ]);
         }
         $request->session()->flash('status', 'Task was successful!');
-        return back();
+        return redirect()->route('news.edit',['id' => $last_insert_id]);
     }
 
     public function getEdit($id)
@@ -122,7 +134,20 @@ class NewsController extends Controller
         if ($request->news_content != "") {
             $news_content = $request->news_content;
             $news->news_content = $news_content;
+        } else {
+            $news->news_content = NULL;
         }
+        // if ($request->hasFile('news_image') != "") {
+        //     $news_image = $request->file('news_image');
+        //     $image_icon = $news_image->getClientOriginalName();
+        //     $filename = pathinfo($image_icon, PATHINFO_FILENAME);
+        //     $extension = pathinfo($image_icon, PATHINFO_EXTENSION);
+        //     $directory = public_path('/uploads/avatar/');
+        //     Image::make($news_image)->resize(400, null, function($constraint){
+        //         $constraint->aspectRatio();
+        //     })->save($directory . $filename.time().'.'.$extension);
+        //     $news->news_image = '/uploads/avatar/' . $filename.time().'.'.$extension;
+        // }
         if ($request->news_image != "") {
             $news_image = $request->news_image;
             $news->news_image = $news_image;
@@ -186,7 +211,7 @@ class NewsController extends Controller
         $id = $request->cb;
         if($id != ""){
               foreach($id as $uid){
-                 $pc = DB::table('nc')->where('news_id', $uid)->delete();
+                 $pc = DB::table('nc')->where('new_id', $uid)->delete();
                  $product = News::find($uid);
                  if($product != ""){
                      $product->delete();

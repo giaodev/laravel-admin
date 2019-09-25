@@ -19,7 +19,44 @@
 @yield('g_head')
 </head>
 <body>
-    <div class="container-fluid">
+        <nav class="navbar navbar-default" role="navigation" id="navbar">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" target="_blank">Xem giao diện</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="divider"></li>
+                            <li><a href="logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="main">
 
     @section('sidebar')
     <div class="col-sm-2">
@@ -59,6 +96,17 @@
                 <li><a href="{{ route('widget.add') }}">Thêm widget</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle"><span class="glyphicon glyphicon-asterisk"></span> Giao diện <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+                <li><a href="">Trang chủ</a></li>
+                <li><a href="">Sản phẩm</a></li>
+                <li><a href="">Bài viết</a></li>
+                <li><a href="">Trang</a></li>
+                <li><a href="">Giỏ hàng</a></li>
+                <li><a href="">Tìm kiếm</a></li>
+          </ul>
+        </li>
         <li><a href="{{ route('orders.index') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Đơn hàng</a>
         </li>
         <li class="dropdown">
@@ -72,43 +120,6 @@
     </div>
     @show
     <div class="col-sm-10">
-            <nav class="navbar navbar-default" role="navigation" id="navbar">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/" target="_blank">Xem giao diện</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="divider"></li>
-                                <li><a href="logout">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
         @yield('content')
     </div>
 </div>

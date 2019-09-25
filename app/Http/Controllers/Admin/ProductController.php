@@ -13,6 +13,7 @@ use App\Http\Requests\AddProductRequest;
 use App\Http\Requests\EditProductRequest;
 use Illuminate\Support\Str;
 use Auth;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductController extends Controller
 {
@@ -66,10 +67,22 @@ class ProductController extends Controller
             $product_content = $request->product_content;
             $product->product_content = $product_content;
         }
+        // if ($request->hasFile('product_image') != "") {
+        //     $product_image = $request->file('product_image');
+        //     $image_icon = $product_image->getClientOriginalName();
+        //     $filename = pathinfo($image_icon, PATHINFO_FILENAME);
+        //     $extension = pathinfo($image_icon, PATHINFO_EXTENSION);
+        //     $directory = public_path('/uploads/avatar/');
+        //     Image::make($product_image)->resize(400, null, function($constraint){
+        //         $constraint->aspectRatio();
+        //     })->save($directory . $filename.time().'.'.$extension);
+        //     $product->product_image = '/uploads/avatar/' . $filename.time().'.'.$extension;
+        // }
         if($request->product_image != ""){
             $product_image = $request->product_image;
             $product->product_image = $product_image;
         }
+
         if($request->product_gallery != ""){
             $product_gallery = $request->product_gallery;
             $product->product_gallery = $product_gallery;
@@ -125,8 +138,21 @@ class ProductController extends Controller
         $product->product_promotion = $product_promotion;
         $product_content = $request->product_content;
         $product->product_content = $product_content;
-        $product_image = $request->product_image;
-        $product->product_image = $product_image;
+        // if ($request->hasFile('product_image') != "") {
+        //     $product_image = $request->file('product_image');
+        //     $image_icon = $product_image->getClientOriginalName();
+        //     $filename = pathinfo($image_icon, PATHINFO_FILENAME);
+        //     $extension = pathinfo($image_icon, PATHINFO_EXTENSION);
+        //     $directory = public_path('/uploads/avatar/');
+        //     Image::make($product_image)->resize(400, null, function($constraint){
+        //         $constraint->aspectRatio();
+        //     })->save($directory . $filename.time().'.'.$extension);
+        //     $product->product_image = '/uploads/avatar/' . $filename.time().'.'.$extension;
+        // }
+        if($request->product_image != ""){
+            $product_image = $request->product_image;
+            $product->product_image = $product_image;
+        }
         $product->product_gallery = $request->product_gallery;
         $product_title_seo = $request->product_title_seo;
         $product->product_title_seo = $product_title_seo;
