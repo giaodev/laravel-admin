@@ -92,6 +92,20 @@
     </div>
 </div>
 
+
+<div class="panel panel-default list_item">
+    <div class="panel-heading ">
+      <h3 class="panel-title">Tin BĐS</h3>
+  </div>
+  <div class="panel-body">
+    <select name="news_type" id="input" class="form-control" required="required">
+        <option value="1" {{ ($data->news_type == 1) ? "selected" : "" }}>Mặc định</option>
+        <option value="2" {{ ($data->news_type == 2) ? "selected" : "" }}>Tin HOT</option>
+    </select>
+</div>
+</div>
+
+
 <div class="panel panel-default list_item">
     <div class="panel-heading ">
       <h3 class="panel-title">Thẻ</h3>

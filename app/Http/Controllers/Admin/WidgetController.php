@@ -26,10 +26,8 @@ public function getIndex()
     {
         $widget = new widget();
         $widget->widget_title = $request->widget_title;
-        if ($request->widget_content != "") {
-            $widget_content = $request->widget_content;
-            $widget->widget_content = $widget_content;
-        }
+        $widget_content = $request->widget_content;
+        $widget->widget_content = $widget_content;
         $widget->widget_type = $request->widget_type;
         $widget->widget_status = $request->widget_status;
         $widget->widget_order = $request->widget_order;

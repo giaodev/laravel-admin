@@ -80,6 +80,7 @@ class NewsController extends Controller
             $news->news_scripts_header = $news_scripts_header;
         }
         $news->news_related_product = $request->news_related_product;
+        // $news->news_type = $request->news_type;
         $news->news_active = $request->news_active;
         $news->user_id = Auth::user()->id;
         $news->save();
@@ -165,6 +166,7 @@ class NewsController extends Controller
             $news->news_scripts_header = $news_scripts_header;
         }
         $news->news_related_product = $request->news_related_product;
+        $news->news_type = $request->news_type;
         $news->news_active = $request->news_active;
         $news->user_id = Auth::user()->id;
         $news->save();

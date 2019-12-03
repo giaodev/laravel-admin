@@ -25,6 +25,7 @@ class CreatenewTable extends Migration
             $table->text('news_scripts_header')->nullable(true);
             $table->integer('cate_primary_id')->default(0);
             $table->integer('news_related_product')->default(0);
+            $table->integer('news_type')->default(0);
             $table->integer('news_active')->nullable(true)->default(1);
             $table->integer('user_id');
             $table->timestamps();

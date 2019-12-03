@@ -69,8 +69,8 @@ Route::namespace('Frontend')->group(function(){
     Route::get('hoan-tat','HomeController@success')->name('success');
 });
 /* Route Login */
-Route::get('admin' , 'LoginController@getIndex')->name('login');
-Route::post('admin' , 'LoginController@postIndex')->name('login');
+Route::get('gadmin' , 'LoginController@getIndex')->name('login');
+Route::post('gadmin' , 'LoginController@postIndex')->name('login');
 Route::get('/logout', function(){
    Auth::logout();
    return redirect()->route('login');

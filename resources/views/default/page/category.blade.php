@@ -3,5 +3,8 @@
 @section('title', $title)
 
 @section('content')
-    Đây là mục category
+    <h1>{{ $category->cate_title }}</h1>
+    <div class="content">
+    	{!! $category->cate_info !!}
+    </div>
 @endsection

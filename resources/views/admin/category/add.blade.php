@@ -69,6 +69,7 @@
                     <option value="1">Sản phẩm</option>
                     <option value="2">Bài viết</option>
                     <option value="3">Trang</option>
+                    <option value="4">Liên hệ</option>
                 </optgroup>
             </select>
         </div>

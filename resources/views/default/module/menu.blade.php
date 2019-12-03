@@ -8,12 +8,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Dichvuweb247.net</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ asset('/') }}">Trang Chủ</a></li>
             @if($menu)
             @foreach($menu as $value)
             @if($value->cate_parent == 0)
@@ -22,7 +22,7 @@
                 <ul class="sub-menu">
                     @foreach($menu as $value2)
                     @if($value2['cate_parent'] == $value->id)
-                    <a href="{{ route('check_slug', ['slug' => $value2->cate_slug]) }}">{{ $value2->cate_name }}</a>
+                    <li><a href="{{ route('check_slug', ['slug' => $value2->cate_slug]) }}">{{ $value2->cate_name }}</a></li>
                     @endif
                     @endforeach
                 </ul>

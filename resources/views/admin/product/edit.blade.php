@@ -15,8 +15,8 @@
             <p><b>Link sản phẩm</b>: <a href="{{ route('check_slug',['slug' => $data->product_slug]) }}" target="_blank">{{ route('check_slug',['slug' => $data->product_slug]) }}</a></p>
           </div>
           <div class="form-group">
-            <label for="product_title" class="control-label">Tiêu đề</label>
-            <input type="text" class="form-control" name="product_title" id="product_title" placeholder="Tiêu đề" value="{{ $data->product_title }}" required>
+            <label for="product_title" class="control-label">Tên BĐS</label>
+            <input type="text" class="form-control" name="product_title" id="product_title" placeholder="Tên BĐS" value="{{ $data->product_title }}" required>
         </div>
         <div class="form-group">
             <label for="product_slug" class="control-label">Đường dẫn</label>
@@ -60,13 +60,24 @@
         <div class="row">
             <div class="form-group">
               <div class="col-sm-6">
-                <label for="product_price" class="control-label">Giá sản phẩm</label>
-                <input type="text" class="form-control" name="product_price" id="product_price" placeholder="Giá sản phẩm" value="{{ $data->product_price }}">
+                <label for="product_price" class="control-label">Giá BĐS</label>
+                <input type="text" class="form-control" name="product_price" id="product_price" placeholder="Giá BĐS" value="{{ $data->product_price }}">
             </div>
-            <div class="col-sm-6">
+{{--             <div class="col-sm-6">
                 <label for="product_promotion" class="control-label">Giá đã giảm</label>
                 <input type="text" class="form-control" name="product_promotion" id="product_promotion" placeholder="Giá đã giảm" value="{{ $data->product_promotion }}">
+            </div> --}}
+
+            <div class="col-sm-6">
+                <label for="product_price2" class="control-label">Giá bán theo m2</label>
+                <input type="text" class="form-control" name="product_price2" id="product_price2" placeholder="Giá bán theo m2" value="{{ $data->product_price2 }}">
             </div>
+        </div>
+        <div class="row">
+         <div class="col-sm-6">
+             <label for="dien_tich" class="control-label">Diện tích</label>
+             <input type="text" class="form-control" name="dien_tich" id="dien_tich" placeholder="Diện tích" value="{{ $data->dien_tich }}">
+         </div> 
         </div>
     </div>
     <div class="form-group">
@@ -120,7 +131,7 @@
 </div>
 <div class="panel panel-default list_item">
     <div class="panel-heading">
-      <h3 class="panel-title">Thuộc tính sản phẩm</h3>
+      <h3 class="panel-title">Thuộc tính BĐS</h3>
   </div>
   <div class="panel-body list_scroll">
     <div class="list_category">

@@ -59,9 +59,17 @@ class ProductController extends Controller
             $product_price = $request->product_price;
             $product->product_price = $product_price;
         }
-        if($request->product_promotion != ""){
-            $product_promotion = $request->product_promotion;
-            $product->product_promotion = $product_promotion;
+        if($request->product_price2 != ""){
+            $product_price2 = $request->product_price2;
+            $product->product_price2 = $product_price2;
+        }
+        // if($request->product_promotion != ""){
+        //     $product_promotion = $request->product_promotion;
+        //     $product->product_promotion = $product_promotion;
+        // }
+        if($request->dien_tich != ""){
+            $dien_tich = $request->dien_tich;
+            $product->dien_tich = $dien_tich;
         }
         if($request->product_content != ""){
             $product_content = $request->product_content;
@@ -134,8 +142,16 @@ class ProductController extends Controller
         $product->product_description = $product_description;
         $product_price = $request->product_price;
         $product->product_price = $product_price;
-        $product_promotion = $request->product_promotion;
-        $product->product_promotion = $product_promotion;
+        if($request->product_price2 != ""){
+            $product_price2 = $request->product_price2;
+            $product->product_price2 = $product_price2;
+        }
+        // $product_promotion = $request->product_promotion;
+        // $product->product_promotion = $product_promotion;
+        if($request->dien_tich != ""){
+            $dien_tich = $request->dien_tich;
+            $product->dien_tich = $dien_tich;
+        }
         $product_content = $request->product_content;
         $product->product_content = $product_content;
         // if ($request->hasFile('product_image') != "") {

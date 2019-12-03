@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'tuvan.com';
-$config['licenseKey']  = '7424VQ6KB9V5NCXCEJ8QQMEM5B3KD';
+$config['licenseName'] = 'giaodev.com';
+$config['licenseKey']  = 'Q6264DH8831AC9X5ASAW162M2SMLJ';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir

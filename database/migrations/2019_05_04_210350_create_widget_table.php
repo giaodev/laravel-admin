@@ -15,11 +15,11 @@ class CreateWidgetTable extends Migration
     {
         Schema::create('widget', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('widget_title');
-            $table->longText('widget_content');
-            $table->integer('widget_order');
-            $table->integer('widget_type');
-            $table->integer('widget_status');
+            $table->string('widget_title')->nullable(true);
+            $table->longText('widget_content')->nullable(true);
+            $table->integer('widget_order')->default(0);
+            $table->integer('widget_type')->default(1);
+            $table->integer('widget_status')->default(0);
             $table->timestamps();
         });
     }

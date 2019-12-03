@@ -17,26 +17,47 @@ use DB;
 use Cart;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 class HomeController extends Controller
 {
     public $data;
     public function __construct(){
         $this->data['setting'] = Setting::find(1);
         $this->data['menu'] = Category::where(['cate_status' => 1, 'cate_type2' => 1])->orderby('cate_order','desc')->get();
+        $this->data['left_menu'] = Category::where(['cate_status' => 1, 'cate_type2' => 2])->orderby('cate_order','desc')->get();
         $this->data['footer'] = Widget::where(['widget_type' => 2, 'widget_status' => 1])->orderby('widget_order','asc')->get();
         $this->data['icon'] = Images::where(['images_type' => 6,'images_status' => 1])->orderby('images_orderby','desc')->get();
+        $this->data['quang_cao'] = Images::where(['id' => 1,'images_type' => 5, 'images_status' => 1])->first();
+        $this->data['banner'] = Images::where(['id' => 2, 'images_type' => 1,'images_status' => 1])->orderby('created_at','desc')->first();
+        $this->data['filter'] = Attr::where(['attr_filter' => 0, 'attr_active' => 1])->get();
+        $this->data['news_sidebar'] = DB::table('news')
+        ->join('nc','news.id','=','nc.new_id')
+        ->join('category','nc.category_id','=','category.id')
+        ->select('news.*','nc.category_id','category.*')
+        ->Where([['nc.category_id', 3],['news.news_active', 1]])->orderBy('news.created_at', 'desc')->paginate(4);
+        $this->data['cua_hang'] = Images::where(['id' => 3, 'images_type' => 2,'images_status' => 1])->orderby('created_at','desc')->first();
+        $this->data['van_phong'] = Images::where(['id' => 4, 'images_type' => 2,'images_status' => 1])->orderby('created_at','desc')->first();
+
+        // dd($this->data['news_sidebar']);
     }
-    public function index(){
+    public function index(){    
         $setting = $this->data['setting'];
         $this->data['title'] = $setting->homepage_title;
         $this->data['description'] = $setting->homepage_description;
         $this->data['og_image'] = $setting->homepage_image;
-        $this->data['banner'] = Images::where(['images_type' => 1,'images_status' => 1])->orderby('created_at','desc')->get();
         $this->data['slider_category'] = Category::where(['cate_parent' => 2, 'cate_status' => 1])->orderby('cate_order','desc')->select('cate_name','cate_title','cate_image','cate_slug')->get();
         $this->data['product_new'] = Product::orderby('created_at','desc')->limit('6')->get();
+        // dd($this->data['product_new']);
         // $this->data['rt_poster'] = Images::where('id',9)->select("images_avatar","images_title")->first();
         $this->data['product_hot'] = Product::orderby('created_at','desc')->where('product_type',1)->limit('6')->get();
         $this->data['news'] = News::orderBy('created_at','desc')->limit(4)->get();
+        $this->data['news_slide'] = News::orderBy('created_at','desc')->limit(4)->get();
+        $this->data['news_list'] = News::orderBy('created_at','desc')->limit(5)->get();
+        $this->data['news_list2'] = News::orderBy('created_at','desc')->limit(7)->get();
+        // footer news
+        $this->data['news_f'] = News::orderBy('created_at','desc')->first();
+        $this->data['news_list_f'] = News::orderBy('created_at','desc')->limit(8)->get();
+
         return view('default.page.home', $this->data);
 
     }
@@ -60,8 +81,11 @@ class HomeController extends Controller
                  return view('default.page.news', $this->data);
                  break;
                  case '3':
-                 $this->contact($category->id);
+                 $this->page($category->id);
                  return view('default.page.category', $this->data);
+                 case '4':
+                 $this->contact($category->id);
+                 return view('default.page.contact', $this->data);
                  break;
                  default:
                  break;
@@ -139,6 +163,11 @@ class HomeController extends Controller
         // echo "<pre>";
         // print_r($query);
         // echo "</pre>";
+    }
+    public function page($id){
+        $this->data['category'] = Category::find($id);
+        $category = $this->data['category'];
+        $this->data['title'] = $category->cate_title;
     }
     public function contact($id){
         $this->data['category'] = Category::find($id);
@@ -250,6 +279,7 @@ class HomeController extends Controller
         $orders->phone = $request->phone;
         $orders->address = $request->address;
         $orders->email = $request->email;
+        $orders->link = $request->link;
         $orders->note = $request->note;
         $orders->list_orders = serialize(Cart::getContent()->toArray());
         $orders->save();
@@ -265,5 +295,9 @@ class HomeController extends Controller
         $this->data['list_brand'] = Category::where('cate_parent', 2)->get();
         $data = $this->data['data'];
         $this->data['title'] = ($data->news_title_seo) ? $data->news_title_seo : $data->news_title;
+        $this->data['description'] = ($data->news_description_seo) ? $data->news_description_seo : Str::limit($data->news_description_seo,300,'');
+        $this->data['og_image'] = ($data->news_image != "") ? $data->news_image : $setting->homepage_image;
+        $this->data['url'] = $data->news_slug;
+        $this->data['related_news'] = News::where('cate_primary_id', $data->cate_primary_id)->limit(8)->get();
     }
 }

@@ -12,9 +12,14 @@ use DB;
 class AttrController extends Controller
 {
     public function getIndex(){
+        // DB::enableQueryLog();
         $data['title'] = "Danh sách thuộc tính";
         $data['data'] = Attr::orderBy('attr_orderby','desc')->get();
         $data['listAttr'] = Attr::all();
+        // $query = DB::getQueryLog();
+        // echo "<pre>";
+        // print_r($query);
+        // echo "</pre>";
         return view('admin.attr.index', $data);
     }
     public function postIndex(AddAttrRequest $request){

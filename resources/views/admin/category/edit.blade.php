@@ -69,6 +69,7 @@
                     <option value="1" {{ ($data->cate_type == 1) ? "selected" : "" }}>Sản phẩm</option>
                     <option value="2" {{ ($data->cate_type == 2) ? "selected" : "" }}>Bài viết</option>
                     <option value="3" {{ ($data->cate_type == 3) ? "selected" : "" }}>Trang</option>
+                    <option value="3" {{ ($data->cate_type == 4) ? "selected" : "" }}>Liên hệ</option>
                 </optgroup>
             </select>
         </div>

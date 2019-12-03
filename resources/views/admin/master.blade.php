@@ -78,16 +78,16 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="{{ route('product.index') }}" class="dropdown-toggle"><span class="glyphicon glyphicon-plus"></span> Sản phẩm <span class="caret"></span></a>
+          <a href="{{ route('product.index') }}" class="dropdown-toggle"><span class="glyphicon glyphicon-plus"></span> Đăng BĐS <span class="caret"></span></a>
           <ul class="dropdown-menu">
-                <li><a href="{{ route('product.add') }}">Thêm sản phẩm</a></li>
-                <li><a href="{{ route('attr.index') }}">Thuộc tính sản phẩm</a></li>
+                <li><a href="{{ route('product.add') }}">Thêm mới</a></li>
+                <li><a href="{{ route('attr.index') }}">Thuộc tính</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="{{ route('image.index') }}" class="dropdown-toggle"><span class="glyphicon glyphicon-picture"></span> Hình ảnh <span class="caret"></span></a>
           <ul class="dropdown-menu">
-                <li><a href="{{ route('image.add') }}">Thêm sản phẩm</a></li>
+                <li><a href="{{ route('image.add') }}">Thêm mới</a></li>
           </ul>
         </li>
         <li class="dropdown">

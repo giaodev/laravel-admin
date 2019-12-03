@@ -27,7 +27,9 @@
                     <option value="3">Hoàn thành</option>
                 </select>
             </div>
+            <div class="col-sm-12">Link dự án: <a href="{{ $data->link }}" target="_blank">{{ $data->link }}</a></div>
             </div>
+            <br>
             <div class="row">
                 <div class="table-responsive">
                 <table class="table table-bordered">

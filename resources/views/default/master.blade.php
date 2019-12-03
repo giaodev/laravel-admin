@@ -45,6 +45,7 @@
   <!-- Bootstrap -->
   <link href="gapp/css/bootstrap.min.css" rel="stylesheet">
   <link href="frontend/css/style.css" rel="stylesheet">
+  <link href="frontend/css/lightbox.min.css" rel="stylesheet">
   @yield('giaovn_header')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -56,6 +57,16 @@
   </head>
   <body class="@yield('body_class')">
     <header>
+      <div class="jumbotron jumbotron-header">
+        <div class="container">
+          <div class="col-xs-12 col-sm-4 logo">
+            <a href="{{ asset('/') }}" title="{{ $setting->homepage_title }}"><img src="{{ $setting->logo }}" alt="{{ $setting->homepage_title }}" width="100"></a>
+          </div>
+          <div class="col-xs-12 col-sm-8 quang_cao">
+              <img src="{{ $quang_cao->images_avatar }}" alt="" class="img-responsive">
+          </div>
+        </div>
+      </div>
         @include('default/module/menu')
         @include('default/module/banner')
     <div class="container">
@@ -67,19 +78,16 @@
         <div id="footer">
           <div class="container">
             <div class="row">
-              <div class="col-md-4">
-                <h4>Liên hệ</h4>
-                <p><b>Dịch vụ thiết kế website chuyên nghiệp</b></p>
-                <p><b>Hotline: </b>0978.43.2882</p>
+              @if($footer)
+              @foreach($footer as $f)
+              <div class="col-md-6">
+                {!! ($f->widget_title != "") ? '<h3>'.$f->widget_title.'</h3>' : '' !!}
+                <div class="f_content">
+                  {!! $f->widget_content !!}
+                </div>
               </div>
-              <div class="col-md-4">
-                <h4>Chính sách</h4>
-                <p><b></b></p>
-              </div>
-              <div class="col-md-4">
-                <h4>Mạng xã hội</h4>
-                <p><b></b></p>
-              </div>
+              @endforeach
+              @endif
             </div>
           </div>
         </div>
@@ -89,6 +97,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="gapp/js/bootstrap.min.js"></script>
     <script src="frontend/js/jquery.lazyloadxt.js"></script>
+    <script src="frontend/js/lightbox.min.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0"></script>
     @yield('giaovn_footer')
   </body>
   </html>

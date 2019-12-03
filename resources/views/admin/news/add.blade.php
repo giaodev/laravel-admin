@@ -95,6 +95,19 @@
     </div>
 </div>
 
+<div class="panel panel-default list_item">
+    <div class="panel-heading ">
+      <h3 class="panel-title">Tin BĐS</h3>
+  </div>
+  <div class="panel-body">
+    <select name="news_type" id="input" class="form-control" required="required">
+        <option value="1">Mặc định</option>
+        <option value="2">Tin HOT</option>
+    </select>
+</div>
+</div>
+
+
 
 <div class="panel panel-default list_item">
     <div class="panel-heading ">
