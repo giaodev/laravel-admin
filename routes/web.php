@@ -112,6 +112,12 @@ Route::namespace('Admin')->middleware('checklogin')->group(function(){
             Route::post('edit/{id}', 'ProductController@postEdit')->name('product.edit');
             Route::get('delete/{id}', 'ProductController@getDelete')->name('product.delete');
             Route::get('deleteall', 'ProductController@getDeleteAll')->name('product.deleteall');
+
+            Route::get('export', 'ProductController@export')->name('export');
+            Route::get('importExportView', 'ProductController@importExportView');
+            Route::post('import', 'ProductController@import')->name('import');
+
+            
         });
         /* Group Attr */
         Route::prefix('attr')->group(function(){
@@ -179,5 +185,10 @@ Route::namespace('Admin')->middleware('checklogin')->group(function(){
             Route::post('edit/{id}', 'OrdersController@postEdit')->name('orders.edit');
             Route::get('delete/{id}', 'OrdersController@getDelete')->name('orders.delete');
         });
+        // Route::prefix('ep')->group(function(){
+        //     Route::get('csv_file', 'CsvFile@index');
+        //     Route::get('csv_file/export', 'CsvFile@csv_export')->name('export');
+        //     Route::post('csv_file/import', 'CsvFile@csv_import')->name('import');
+        // });
     });
 });

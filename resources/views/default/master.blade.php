@@ -63,7 +63,7 @@
             <a href="{{ asset('/') }}" title="{{ $setting->homepage_title }}"><img src="{{ $setting->logo }}" alt="{{ $setting->homepage_title }}" width="100"></a>
           </div>
           <div class="col-xs-12 col-sm-8 quang_cao">
-              <img src="{{ $quang_cao->images_avatar }}" alt="" class="img-responsive">
+              {{-- <img src="{{ $quang_cao->images_avatar }}" alt="" class="img-responsive"> --}}
           </div>
         </div>
       </div>

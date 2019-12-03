@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-banner" style="background:url({{ asset($banner->images_avatar) }})">
+{{-- <div class="jumbotron jumbotron-banner" style="background:url({{ asset($banner->images_avatar) }})"> --}}
   <div class="container">
     <form action="{{ route('filter') }}" method="get">
       <div class="row">

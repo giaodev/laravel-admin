@@ -15,6 +15,10 @@ use Illuminate\Support\Str;
 use Auth;
 use Intervention\Image\ImageManagerStatic as Image;
 
+use App\Exports\CsvExport;
+use App\Imports\CsvImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ProductController extends Controller
 {
     public function getIndex(){
@@ -215,6 +219,29 @@ class ProductController extends Controller
              }
              $request->session()->flash('status', 'Task was successful!');
          }
+        return back();
+    }
+
+    public function importExportView()
+    {
+       return view('import');
+    }
+    
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function export() 
+    {
+        return Excel::download(new CsvExport, 'product.xlsx');
+    }
+    
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import() 
+    {
+        Excel::import(new CsvImport,request()->file('file'));
+           
         return back();
     }
 }

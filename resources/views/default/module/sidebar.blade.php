@@ -33,7 +33,7 @@
 	</ul>	
 </div>
 <div class="sidebar">
-	<img data-src="{{ asset($cua_hang->images_avatar) }}" alt="" class="img-responsive">
+	{{-- <img data-src="{{ asset($cua_hang->images_avatar) }}" alt="" class="img-responsive"> --}}
 </div>
 
 <div id="ctl31_HeaderContainer" class="tit_l">
